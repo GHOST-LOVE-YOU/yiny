@@ -1,14 +1,3 @@
-import type { Locale } from '@/lib/i18n'
-
-export interface DigestMeta {
-  roleId: string
-  roleName: { zh: string; en: string }   // 双语
-  date: string
-  title: { zh: string; en: string }       // 双语
-  mustReadCount: number
-  worthReadingCount: number
-}
-
 export const registry: DigestMeta[] = [
   {
     roleId: "music-to-dance",
@@ -23,6 +12,14 @@ export const registry: DigestMeta[] = [
     },
     mustReadCount: 3,
     worthReadingCount: 5,
+  },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-02-28",
+    title: { zh: "因果扩散与音频-运动对齐的新进展", en: "Advances in Causal Diffusion and Audio-Motion Alignment" },
+    mustReadCount: 3,
+    worthReadingCount: 4,
   },
 ]
 
