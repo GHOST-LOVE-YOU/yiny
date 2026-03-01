@@ -4,8 +4,8 @@ import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/ui/footer";
 
 export const metadata: Metadata = {
-  title: "AI Paper Digest",
-  description: "Daily curated insights from the latest AI research papers",
+  title: "AI Paper Digest - AI 论文速递",
+  description: "Daily curated insights from the latest AI research papers. 每天为你精选最值得读的 AI 论文。",
 };
 
 export default function RootLayout({

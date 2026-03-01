@@ -1,8 +1,10 @@
+import type { Locale } from '@/lib/i18n'
+
 export interface DigestMeta {
   roleId: string
-  roleName: string
+  roleName: { zh: string; en: string }   // 双语
   date: string
-  title: string
+  title: { zh: string; en: string }       // 双语
   mustReadCount: number
   worthReadingCount: number
 }
@@ -10,9 +12,15 @@ export interface DigestMeta {
 export const registry: DigestMeta[] = [
   {
     roleId: "music-to-dance",
-    roleName: "Music-to-Dance 视频生成研究者",
+    roleName: {
+      zh: "Music-to-Dance 视频生成研究者",
+      en: "Music-to-Dance Video Generation",
+    },
     date: "2000-01-01",
-    title: "扩散模型遇上舞蹈生成",
+    title: {
+      zh: "扩散模型遇上舞蹈生成",
+      en: "Diffusion Models Meet Dance Generation",
+    },
     mustReadCount: 3,
     worthReadingCount: 5,
   },
@@ -38,4 +46,12 @@ export function getLatestPerRole(): DigestMeta[] {
     }
   }
   return Array.from(latestMap.values())
+}
+
+// Helper function to get localized string from bilingual object
+export function getLocalized<T extends { zh: string; en: string }>(
+  obj: T,
+  locale: Locale
+): string {
+  return obj[locale]
 }
