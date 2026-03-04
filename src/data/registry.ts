@@ -57,6 +57,14 @@ export const registry: DigestMeta[] = [
   {
     roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-03-03",
+    title: { zh: "矢量动画生成与自适应推理：图像编辑与生成的新进展", en: "Vector Animation & Adaptive Inference: New Advances in Image Editing and Generation" },
+    mustReadCount: 3,
+    worthReadingCount: 3,
+  },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2026-03-04",
     title: { zh: "今日论文速递（2026-03-04）", en: "Daily Paper Digest (2026-03-04)" },
     mustReadCount: 0,
