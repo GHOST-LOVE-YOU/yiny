@@ -73,6 +73,14 @@ export const registry: DigestMeta[] = [
   {
     roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-03-05",
+    title: { zh: "4D重建与实时生成：人体运动合成的新前沿", en: "4D Reconstruction and Real-Time Generation: New Frontiers in Human Motion Synthesis" },
+    mustReadCount: 5,
+    worthReadingCount: 5,
+  },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2026-03-06",
     title: { zh: "世界建模与细节保持：视频生成的新突破", en: "World Modeling and Detail Preservation: New Breakthroughs in Video Generation" },
     mustReadCount: 5,
