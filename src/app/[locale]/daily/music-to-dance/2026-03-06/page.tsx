@@ -46,7 +46,7 @@ const content = {
         num: 3,
         tag: "实时生成 / 物理仿真",
         title: "RealWonder：实时物理动作条件视频生成",
-        description: "RealWonder是首个支持3D物理动作（力、力场、机器人操作）条件输入的实时视频生成系统，在480×832分辨率下达到13.2 FPS。核心创新在于将物理仿真作为中间表示桥梁：将连续3D动作通过物理引擎转换为光流和RGB预览图，再输入蒸馏后的4步扩散视频生成器。这种架构巧妙避开了连续动作的token化难题，且无需昂贵的动作-视频配对数据。对于music-to-dance任务，RealWonder的流条件蒸馏方案（flow-conditioned distillation）可直接借鉴用于降低推理成本；其"物理仿真→中间表示→视频生成"的流水线思路也为音频节拍到舞蹈动作的映射提供了新范式——可将音频特征转换为运动学表示（如光流或姿态热力图）作为中间桥梁。",
+        description: "RealWonder是首个支持3D物理动作（力、力场、机器人操作）条件输入的实时视频生成系统，在480×832分辨率下达到13.2 FPS。核心创新在于将物理仿真作为中间表示桥梁：将连续3D动作通过物理引擎转换为光流和RGB预览图，再输入蒸馏后的4步扩散视频生成器。这种架构巧妙避开了连续动作的token化难题，且无需昂贵的动作-视频配对数据。对于music-to-dance任务，RealWonder的流条件蒸馏方案（flow-conditioned distillation）可直接借鉴用于降低推理成本；其「物理仿真→中间表示→视频生成」的流水线思路也为音频节拍到舞蹈动作的映射提供了新范式——可将音频特征转换为运动学表示（如光流或姿态热力图）作为中间桥梁。",
         keyPoints: [
           "物理仿真作为中间表示：将3D动作转换为光流/RGB预览，避免连续动作token化难题",
           "4步蒸馏视频生成器：流条件扩散模型实现13.2 FPS实时生成",
@@ -168,7 +168,7 @@ const content = {
         num: 3,
         tag: "Real-time Generation / Physics Simulation",
         title: "RealWonder: Real-Time Physical Action-Conditioned Video Generation",
-        description: "RealWonder is the first real-time video generation system supporting 3D physical action (forces, force fields, robot manipulation) conditioning, achieving 13.2 FPS at 480×832 resolution. The core innovation uses physics simulation as an intermediate representation bridge: continuous 3D actions are converted to optical flow and RGB preview maps through physics engines, then fed into a distilled 4-step diffusion video generator. This architecture elegantly avoids tokenization challenges for continuous actions and eliminates the need for expensive action-video paired data. For music-to-dance tasks, RealWonder's flow-conditioned distillation scheme can be directly adapted to reduce inference costs; its "physics simulation → intermediate representation → video generation" pipeline also provides a new paradigm for mapping audio beats to dance movements—converting audio features to kinematic representations (like optical flow or pose heatmaps) as an intermediate bridge.",
+        description: "RealWonder is the first real-time video generation system supporting 3D physical action (forces, force fields, robot manipulation) conditioning, achieving 13.2 FPS at 480×832 resolution. The core innovation uses physics simulation as an intermediate representation bridge: continuous 3D actions are converted to optical flow and RGB preview maps through physics engines, then fed into a distilled 4-step diffusion video generator. This architecture elegantly avoids tokenization challenges for continuous actions and eliminates the need for expensive action-video paired data. For music-to-dance tasks, RealWonder's flow-conditioned distillation scheme can be directly adapted to reduce inference costs; its 'physics simulation → intermediate representation → video generation' pipeline also provides a new paradigm for mapping audio beats to dance movements—converting audio features to kinematic representations (like optical flow or pose heatmaps) as an intermediate bridge.",
         keyPoints: [
           "Physics Simulation as Intermediate Representation: Converts 3D actions to optical flow/RGB preview, avoiding continuous action tokenization",
           "4-Step Distilled Video Generator: Flow-conditioned diffusion model achieves 13.2 FPS real-time generation",
