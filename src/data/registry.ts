@@ -127,6 +127,39 @@ export function getLatestPerRole(): DigestMeta[] {
 }
 
 // Helper function to get localized string from bilingual object
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-03-09",
+    title: { zh: "物理一致性视频生成与身份保持技术的新进展", en: "Advances in Physics-Consistent Video Generation and Identity Preservation" },
+    mustReadCount: 3,
+    worthReadingCount: 4,
+  },
+]
+
+export function getAllRoleIds(): string[] {
+  const ids = new Set(registry.map(meta => meta.roleId))
+  return Array.from(ids)
+}
+
+export function getByRole(roleId: string): DigestMeta[] {
+  return registry
+    .filter(meta => meta.roleId === roleId)
+    .sort((a, b) => b.date.localeCompare(a.date))
+}
+
+export function getLatestPerRole(): DigestMeta[] {
+  const latestMap = new Map<string, DigestMeta>()
+  for (const meta of registry) {
+    const existing = latestMap.get(meta.roleId)
+    if (!existing || meta.date.localeCompare(existing.date) > 0) {
+      latestMap.set(meta.roleId, meta)
+    }
+  }
+  return Array.from(latestMap.values())
+}
+
+// Helper function to get localized string from bilingual object
 export function getLocalized<T extends { zh: string; en: string }>(
   obj: T,
   locale: Locale
