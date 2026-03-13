@@ -118,37 +118,20 @@ export const registry: DigestMeta[] = [
     mustReadCount: 1,
     worthReadingCount: 1,
   },
-]
-
-export function getAllRoleIds(): string[] {
-  const ids = new Set(registry.map(meta => meta.roleId))
-  return Array.from(ids)
-}
-
-export function getByRole(roleId: string): DigestMeta[] {
-  return registry
-    .filter(meta => meta.roleId === roleId)
-    .sort((a, b) => b.date.localeCompare(a.date))
-}
-
-export function getLatestPerRole(): DigestMeta[] {
-  const latestMap = new Map<string, DigestMeta>()
-  for (const meta of registry) {
-    const existing = latestMap.get(meta.roleId)
-    if (!existing || meta.date.localeCompare(existing.date) > 0) {
-      latestMap.set(meta.roleId, meta)
-    }
-  }
-  return Array.from(latestMap.values())
-}
-
-// Helper function to get localized string from bilingual object
   {
     roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2026-03-11",
     title: { zh: "长视频生成与运动建模：层级去噪、稀疏注意力与关节级潜在空间", en: "Long Video Generation & Motion Modeling: Hierarchical Denoising, Sparse Attention & Per-Joint Latent Space" },
     mustReadCount: 4,
+    worthReadingCount: 6,
+  },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-03-12",
+    title: { zh: "实时音视频生成与长序列建模：流式扩散与空间加速的新突破", en: "Real-Time Audio-Visual Generation & Long-Sequence Modeling: Breakthroughs in Streaming Diffusion and Spatial Acceleration" },
+    mustReadCount: 5,
     worthReadingCount: 6,
   },
 ]
