@@ -114,9 +114,9 @@ export const registry: DigestMeta[] = [
     roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2026-03-10",
-    title: { zh: "概念定制化中的模型保持与纯学习", en: "Model Preservation and Pure Learning in Concept Customization" },
-    mustReadCount: 1,
-    worthReadingCount: 1,
+    title: { zh: "多主体视频定制与流式视觉智能：身份保持、自适应Token化与实时处理", en: "Multi-Subject Video Customization & Streaming Visual Intelligence: Identity Preservation, Adaptive Tokenization & Real-Time Processing" },
+    mustReadCount: 5,
+    worthReadingCount: 5,
   },
   {
     roleId: "music-to-dance",

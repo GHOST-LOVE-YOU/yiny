@@ -7,72 +7,236 @@ import type { Metadata } from 'next'
 
 const content = {
   zh: {
-    roleName: "Music-to-Dance",
-    title: "概念定制化中的模型保持与纯学习",
+    roleName: "Music-to-Dance 视频生成研究者",
+    title: "多主体视频定制与流式视觉智能：身份保持、自适应Token化与实时处理",
     overview: [
-      "PureCC 提出解耦学习目标，在保持原模型能力的同时实现高保真概念定制",
-      "双分支训练架构：冻结提取器提供纯净概念表征，可训练流模型保持原条件预测",
-      "自适应引导尺度 λ* 动态平衡定制保真度与模型保持"
+      "DreamVideo-Omni 实现多主体身份保持与全粒度运动控制的统一框架",
+      "EVATok 的自适应视频 token 化相比固定长度方法节省 24.4% token 使用量",
+      "Spatial-TTT 的 test-time training 机制支持长时序空间理解",
+      "OmniStream 的统一流式视觉骨干实现逐帧在线处理",
+      "DVD 将视频扩散模型适配为确定性深度估计器，解锁几何先验"
     ],
     papers: [
       {
         num: 1,
-        tag: "概念定制",
-        title: "PureCC：解耦学习目标实现纯概念学习",
-        description: "PureCC 针对现有概念定制化方法破坏原模型行为的问题，提出了一个创新的解耦学习目标。该方法将目标概念的隐式引导与原条件预测分离，通过双分支架构实现：一个冻结的表征提取器提供纯净的目标概念表征作为隐式引导，一个可训练的流模型生成原条件预测。这种分离形式使模型在学习个性化概念时能充分考虑原模型行为。此外，论文提出的自适应引导尺度 λ* 基于双分支表征对齐动态调整目标概念引导强度，有效平衡了定制保真度与模型保持。对于 music-to-dance 任务，当前 patch-shuffling 外观迁移策略可能破坏原扩散模型的生成能力，PureCC 的双分支思想可直接迁移：用一个冻结分支保持原模型的运动生成能力，另一个分支专门学习目标人物外观，避免外观学习对动作质量的影响。",
+        tag: "多主体定制",
+        title: "DreamVideo-Omni：全粒度运动控制的多主体视频定制",
+        description: "DreamVideo-Omni 是首个统一多主体身份保持与全粒度运动控制的框架，解决现有方法在控制粒度、控制歧义和身份退化方面的局限。核心创新包括：渐进式两阶段训练范式——第一阶段整合主体外观、全局运动、局部动态和相机运动的综合控制信号，引入 condition-aware 3D RoPE 协调异构输入，分层运动注入策略增强全局运动引导，group 和 role embeddings 显式将运动信号锚定到特定身份；第二阶段设计 latent identity reward feedback 学习范式，在预训练视频扩散骨干上训练 Latent Identity Reward Model (LIRM)，在 latent 空间提供运动感知的身份奖励。与静态图像编码器不同，LIRM 利用 VDM 的时空先验评估视频级身份一致性，惩罚静态'复制粘贴'伪影，同时鼓励大运动下的鲁棒身份保持。对于 music-to-dance 任务，group/role embeddings 机制可直接迁移用于多人物舞蹈场景的运动-身份绑定，LIRM 的奖励学习范式可优化参考人物的外观迁移质量。",
         keyPoints: [
-          "解耦学习目标：将目标概念隐式引导与原条件预测分离，避免分布漂移",
-          "双分支架构：冻结提取器提供纯净概念表征，可训练模型保持原预测能力",
-          "自适应引导尺度 λ*：基于表征对齐动态调整，平衡保真度与模型保持"
+          "首个统一多主体定制与全粒度运动控制的框架，支持主体外观+全局运动+局部动态+相机运动",
+          "group 和 role embeddings 显式锚定运动信号到特定身份，解决多主体控制歧义",
+          "latent identity reward model 在 latent 空间提供运动感知身份奖励，避免 VAE 解码开销"
         ],
-        href: "https://arxiv.org/abs/2603.07561",
-        paperLink: "PureCC: Pure Learning for Text-to-Image Concept Customization",
+        href: "https://arxiv.org/abs/2603.12257",
+        paperLink: "DreamVideo-Omni: Omni-Motion Controlled Multi-Subject Video Customization with Latent Identity Reinforcement Learning",
+      },
+      {
+        num: 2,
+        tag: "自适应Token化",
+        title: "EVATok：自适应长度视频Token化的高效视觉自回归生成",
+        description: "EVATok 提出首个为每个视频预测最优 token 分配的自适应视频 token 化框架，解决传统 tokenizer 均匀分配 token 导致的效率低下问题。方法包含四阶段：训练 proxy tokenizer 估计最优分配；构建 (video, optimal assignment) 数据集训练轻量级 router；router 预测最优分配；最终 adaptive tokenizer 基于 router 预测进行编码。核心创新是 proxy reward 指标，同时衡量重建质量和 token 成本，识别质量-成本权衡最优的分配方案。实验表明，相比 LARP 和固定长度基线，EVATok 在 UCF-101 上实现 SOTA 类别到视频生成质量，同时节省至少 24.4% 的 token 使用量。对于 music-to-dance 生成，舞蹈动作区域需要更多 token 捕捉细节，静态背景需要更少 token，EVATok 的自适应分配可直接优化推理效率和生成质量。",
+        keyPoints: [
+          "首个预测每视频最优 token 分配的自适应视频 token 化框架，节省 24.4% token 使用量",
+          "proxy reward 指标联合衡量重建质量和 token 成本，识别质量-成本最优分配",
+          "router 网络快速预测最优分配，支持训练和推理阶段的自适应编码"
+        ],
+        href: "https://arxiv.org/abs/2603.12267",
+        paperLink: "EVATok: Adaptive Length Video Tokenization for Efficient Visual Autoregressive Generation",
+      },
+      {
+        num: 3,
+        tag: "空间智能",
+        title: "Spatial-TTT：基于Test-Time Training的流式视觉空间智能",
+        description: "Spatial-TTT 提出首个基于 test-time training (TTT) 的流式视觉空间智能框架，解决长时序视频流中空间信息的选择、组织和保持问题。核心设计包括：混合架构——TTT 层与自注意力锚点层交错，平衡高效长上下文压缩与全上下文推理；大块更新策略——提高并行度和硬件效率；并行滑动窗口注意力——保持块内时空连续性。关键创新是 spatial-predictive 机制：在 TTT 分支中使用轻量级深度可分离 3D 时空卷积替代点向线性投影，聚合局部邻域上下文，鼓励快速权重学习时空上下文间的预测映射而非孤立 token，更好地捕捉几何对应和时序连续性。此外，构建密集 3D 场景描述数据集，要求模型生成涵盖全局上下文、物体计数和空间关系的综合描述，为学习快速权重更新动态提供丰富监督。对于 music-to-dance 的长序列舞蹈视频，TTT 机制可帮助模型自适应地维护时序一致性，无需针对特定舞蹈重新训练。",
+        keyPoints: [
+          "首个基于 TTT 的流式视觉空间智能框架，快速权重作为紧凑非线性记忆累积空间证据",
+          "spatial-predictive 机制使用 3D 时空卷积聚合局部上下文，捕捉几何对应和时序连续性",
+          "密集 3D 场景描述数据集提供丰富监督，学习有效的快速权重更新动态"
+        ],
+        href: "https://arxiv.org/abs/2603.12255",
+        paperLink: "Spatial-TTT: Streaming Visual-based Spatial Intelligence with Test-Time Training",
+      },
+      {
+        num: 4,
+        tag: "流式骨干",
+        title: "OmniStream：连续流中的感知、重建与行动统一框架",
+        description: "OmniStream 提出首个统一的流式视觉骨干，通过因果时空注意力和 3D-RoPE 支持高效的逐帧在线视频处理。当前视觉基础模型碎片化，分别专注于图像语义感知、离线时序建模或空间几何。OmniStream 通过 persistent KV-cache 实现因果流式推理，避免对过去帧的重复计算。多任务预训练框架耦合三个互补信号：静态和时序表示学习（自监督师生蒸馏，统一图像表示与因果视频建模）；流式几何重建（轻量级前馈双 DPT 和相机头预测深度图、射线图和相机位姿）；视觉-语言对齐（轻量级自回归语言解码器）。实验表明，即使严格冻结骨干，OmniStream 在图像/视频探测、流式几何重建、复杂视频和空间推理以及机器人操作（训练时未见）等任务上与专业专家相比保持竞争力。对于 music-to-dance 的实时音频驱动视频生成，该统一流式骨干提供了可直接部署的技术基础。",
+        keyPoints: [
+          "统一流式视觉骨干，因果时空注意力 + 3D-RoPE 支持逐帧在线处理",
+          "persistent KV-cache 实现高效流式推理，避免历史帧重复计算",
+          "多任务预训练耦合静态/时序表示、几何重建和视觉-语言对齐"
+        ],
+        href: "https://arxiv.org/abs/2603.12265",
+        paperLink: "OmniStream: Mastering Perception, Reconstruction and Action in Continuous Streams",
+      },
+      {
+        num: 5,
+        tag: "深度估计",
+        title: "DVD：基于生成先验的确定性视频深度估计",
+        description: "DVD 提出首个将预训练视频扩散模型确定性适配为单遍深度回归器的框架，解决生成模型的随机几何幻觉和判别模型对大规模标注数据的依赖之间的权衡困境。核心设计包括：将扩散 timestep 重新用作结构锚点——平衡低频几何稳定性与高频空间细节；latent manifold rectification (LMR)——通过无参数监督对齐 latent 微分，缓解回归引起的时空'均值坍塌'，恢复锐利边界和连贯运动；global affine coherence——发现确定性骨干固有地限制窗口间差异，实现无缝的仿射对齐滑动窗口推理策略，无需复杂的 latent 拼接即可处理长视频。实验表明，DVD 在多个基准上实现 SOTA 零样本性能，仅使用领先基线不到 1% 的任务特定数据即可解锁视频基础模型中丰富的几何先验。对于 dance video 生成，DVD 的技术可用于确保生成视频的几何一致性和 3D 结构合理性。",
+        keyPoints: [
+          "首个确定性适配预训练视频扩散模型为深度回归器的框架，避免随机采样幻觉",
+          "timestep 作为结构锚点平衡几何稳定性与细节精度，LMR 恢复锐利边界",
+          "global affine coherence 实现无缝长视频推理，无需复杂时序对齐"
+        ],
+        href: "https://arxiv.org/abs/2603.12250",
+        paperLink: "DVD: Deterministic Video Depth Estimation with Generative Priors",
       },
     ],
     worthReading: [
       {
-        num: 2,
-        title: "注意力引导的视觉锚定与反思",
-        tag: "多模态推理",
-        href: "https://arxiv.org/abs/2603.03825",
-        description: "提出 VAS 指标量化模型对视觉 token 的关注度，发现推理性能与 VAS 强相关(r=0.9616)。可借鉴到 3D Audio Attention 的注意力分配诊断。",
+        num: 6,
+        title: "ELIT：扩散Transformer的弹性Latent接口",
+        tag: "计算效率",
+        href: "https://arxiv.org/abs/2603.12245",
+        description: "可学习变长 latent 接口根据计算预算动态调整 token 数量，对实时生成场景的计算-质量权衡有启发。",
+      },
+      {
+        num: 7,
+        title: "EvoTok：残差Latent进化的统一图像Tokenizer",
+        tag: "Tokenizer",
+        href: "https://arxiv.org/abs/2603.12108",
+        description: "残差向量量化轨迹统一视觉理解与生成，对舞蹈视频多粒度表示学习有参考价值。",
+      },
+      {
+        num: 8,
+        title: "GRADE：图像编辑中的学科知识推理基准",
+        tag: "评估基准",
+        href: "https://arxiv.org/abs/2603.12264",
+        description: "多维评估协议（推理、一致性、可读性）对舞蹈视频生成质量评估体系设计有参考意义。",
+      },
+      {
+        num: 9,
+        title: "Mobile-GS：移动设备实时高斯Splatting",
+        tag: "移动端渲染",
+        href: "https://arxiv.org/abs/2603.11531",
+        description: "深度感知无序渲染和神经增强策略对移动端实时舞蹈视频渲染有参考价值。",
+      },
+      {
+        num: 10,
+        title: "ShotVerse：电影级相机控制的多镜头视频生成",
+        tag: "相机控制",
+        href: "https://arxiv.org/abs/2603.11421",
+        description: "VLM-based Planner 从文本生成电影级轨迹，对舞蹈视频多镜头相机运动控制有参考价值。",
       },
     ],
-    observation: "今日论文数量较少（仅4篇），但 PureCC 的双分支训练思想对 video generation 的外观保持问题有直接启发。当前 music-to-dance 的 patch-shuffling 策略在迁移参考人物外观时，可能无意中破坏了原模型生成自然动作的能力。借鉴 PureCC 的「冻结分支保持原能力 + 可训练分支学习目标」架构，或许可以设计一个类似的解耦方案：冻结原扩散模型的 motion 相关层，仅训练外观适配模块，从而在保持动作质量的同时实现更好的身份保持。",
+    observation: "3月10日论文呈现两大趋势：一是身份保持与多主体控制——DreamVideo-Omni 的 group/role embeddings 和 LIRM 为多人物舞蹈场景提供了技术路径；二是计算效率与自适应——EVATok 的自适应 token 分配和 ELIT 的弹性 latent 接口为实时 dance generation 优化了资源使用。Spatial-TTT 的 test-time training 和 OmniStream 的统一流式骨干进一步支持长序列和实时处理。DVD 的确定性深度估计为生成视频的几何一致性提供了新工具。对于 music-to-dance 系统，这些技术可组合应用：EVATok 优化 token 效率，DreamVideo-Omni 的身份机制保持参考人物一致性，OmniStream 提供流式推理基础，DVD 确保几何合理性。",
   },
   en: {
-    roleName: "Music-to-Dance",
-    title: "Model Preservation and Pure Learning in Concept Customization",
+    roleName: "Music-to-Dance Video Generation Researcher",
+    title: "Multi-Subject Video Customization & Streaming Visual Intelligence: Identity Preservation, Adaptive Tokenization & Real-Time Processing",
     overview: [
-      "PureCC proposes decoupled learning objectives for high-fidelity customization while preserving original model capabilities",
-      "Dual-branch architecture: frozen extractor provides pure concept representations, trainable flow model maintains original conditional prediction",
-      "Adaptive guidance scale λ* dynamically balances customization fidelity and model preservation"
+      "DreamVideo-Omni achieves unified framework for multi-subject identity preservation and omni-granularity motion control",
+      "EVATok's adaptive video tokenization saves 24.4% token usage compared to fixed-length methods",
+      "Spatial-TTT's test-time training mechanism supports long-horizon spatial understanding",
+      "OmniStream's unified streaming visual backbone enables frame-by-frame online processing",
+      "DVD adapts video diffusion models into deterministic depth estimators, unlocking geometric priors"
     ],
     papers: [
       {
         num: 1,
-        tag: "Concept Customization",
-        title: "PureCC: Decoupled Learning for Pure Concept Learning",
-        description: "PureCC addresses the issue of existing concept customization methods disrupting original model behavior by proposing an innovative decoupled learning objective. The method separates implicit guidance of the target concept from original conditional prediction through a dual-branch architecture: a frozen representation extractor provides purified target concept representations as implicit guidance, while a trainable flow model generates original conditional predictions. This separated form allows the model to fully consider original model behavior when learning personalized concepts. Additionally, the adaptive guidance scale λ* dynamically adjusts target concept guidance strength based on cross-branch representation alignment, effectively balancing customization fidelity and model preservation. For music-to-dance tasks, current patch-shuffling appearance transfer strategies may compromise the original diffusion model's generation capabilities. PureCC's dual-branch concept can be directly transferred: use a frozen branch to preserve the original model's motion generation capability, and another branch dedicated to learning target person appearance, avoiding the impact of appearance learning on motion quality.",
+        tag: "Multi-Subject Customization",
+        title: "DreamVideo-Omni: Omni-Motion Controlled Multi-Subject Video Customization",
+        description: "DreamVideo-Omni is the first framework to unify multi-subject identity preservation with omni-granularity motion control, addressing limitations in control granularity, ambiguity, and identity degradation. Core innovations include: progressive two-stage training paradigm—Stage 1 integrates comprehensive control signals (subject appearances, global motion, local dynamics, camera movements), introduces condition-aware 3D RoPE to coordinate heterogeneous inputs, hierarchical motion injection strategy enhances global motion guidance, and group/role embeddings explicitly anchor motion signals to specific identities; Stage 2 designs latent identity reward feedback learning paradigm, training Latent Identity Reward Model (LIRM) on pretrained video diffusion backbone to provide motion-aware identity rewards in latent space. Unlike static image encoders (CLIP/DINO), LIRM leverages VDM's spatiotemporal priors to evaluate video-level identity consistency, penalizing static 'copy-paste' artifacts while encouraging robust identity preservation under large motion. For music-to-dance tasks, the group/role embeddings mechanism can be directly transferred for motion-identity binding in multi-person dance scenes, and LIRM's reward learning paradigm can optimize reference subject appearance transfer quality.",
         keyPoints: [
-          "Decoupled learning objective: separates target concept implicit guidance from original conditional prediction to avoid distribution drift",
-          "Dual-branch architecture: frozen extractor provides pure concept representations, trainable model maintains original prediction capability",
-          "Adaptive guidance scale λ*: dynamically adjusts based on representation alignment, balancing fidelity and model preservation"
+          "First unified framework for multi-subject customization and omni-granularity motion control: subject appearance + global motion + local dynamics + camera movement",
+          "Group and role embeddings explicitly anchor motion signals to specific identities, resolving multi-subject control ambiguity",
+          "Latent identity reward model provides motion-aware identity rewards in latent space, avoiding VAE decoding overhead"
         ],
-        href: "https://arxiv.org/abs/2603.07561",
-        paperLink: "PureCC: Pure Learning for Text-to-Image Concept Customization",
+        href: "https://arxiv.org/abs/2603.12257",
+        paperLink: "DreamVideo-Omni: Omni-Motion Controlled Multi-Subject Video Customization with Latent Identity Reinforcement Learning",
+      },
+      {
+        num: 2,
+        tag: "Adaptive Tokenization",
+        title: "EVATok: Adaptive Length Video Tokenization for Efficient Visual Autoregressive Generation",
+        description: "EVATok proposes the first adaptive video tokenization framework that predicts optimal token allocation per video, addressing inefficiency in traditional tokenizers' uniform allocation (wasting tokens on simple static segments while underserving dynamic complex ones). The four-stage method: train proxy tokenizer to estimate optimal allocation; build (video, optimal assignment) dataset to train lightweight router; router predicts optimal allocation; final adaptive tokenizer encodes based on router predictions. Core innovation is the proxy reward metric that simultaneously measures reconstruction quality and token cost to identify quality-cost optimal allocations. Experiments show EVATok achieves SOTA class-to-video generation quality on UCF-101 while saving at least 24.4% token usage compared to LARP and fixed-length baselines. For music-to-dance generation, dance motion regions need more tokens for detail while static backgrounds need fewer—EVATok's adaptive allocation directly optimizes inference efficiency and generation quality.",
+        keyPoints: [
+          "First adaptive video tokenization framework predicting optimal token allocation per video, saving 24.4% token usage",
+          "Proxy reward metric jointly measures reconstruction quality and token cost to identify quality-cost optimal allocation",
+          "Router network rapidly predicts optimal allocation, supporting adaptive encoding in both training and inference"
+        ],
+        href: "https://arxiv.org/abs/2603.12267",
+        paperLink: "EVATok: Adaptive Length Video Tokenization for Efficient Visual Autoregressive Generation",
+      },
+      {
+        num: 3,
+        tag: "Spatial Intelligence",
+        title: "Spatial-TTT: Streaming Visual-based Spatial Intelligence with Test-Time Training",
+        description: "Spatial-TTT proposes the first test-time training (TTT) based streaming visual spatial intelligence framework, addressing spatial information selection, organization, and retention in long-horizon video streams. Core designs include: hybrid architecture—TTT layers interleaved with self-attention anchor layers balance efficient long-context compression with full-context reasoning; large-chunk update strategy improves parallelism and hardware efficiency; parallel sliding-window attention preserves intra-chunk spatiotemporal continuity. Key innovation is the spatial-predictive mechanism: using lightweight depthwise 3D spatiotemporal convolutions in TTT branch instead of point-wise linear projections to aggregate local neighborhood context, encouraging fast weights to learn predictive mappings between spatiotemporal contexts rather than isolated tokens, better capturing geometric correspondence and temporal continuity. Additionally, a dense 3D scene description dataset is constructed requiring comprehensive descriptions covering global context, object counts, and spatial relations, providing rich supervision for learning effective fast-weight update dynamics. For long-sequence dance videos, TTT mechanism can help models adaptively maintain temporal consistency without retraining for specific dances.",
+        keyPoints: [
+          "First TTT-based streaming visual spatial intelligence framework, fast weights as compact non-linear memory accumulating spatial evidence",
+          "Spatial-predictive mechanism uses 3D spatiotemporal convolutions to aggregate local context, capturing geometric correspondence and temporal continuity",
+          "Dense 3D scene description dataset provides rich supervision for learning effective fast-weight update dynamics"
+        ],
+        href: "https://arxiv.org/abs/2603.12255",
+        paperLink: "Spatial-TTT: Streaming Visual-based Spatial Intelligence with Test-Time Training",
+      },
+      {
+        num: 4,
+        tag: "Streaming Backbone",
+        title: "OmniStream: Mastering Perception, Reconstruction and Action in Continuous Streams",
+        description: "OmniStream proposes the first unified streaming visual backbone supporting efficient frame-by-frame online video processing through causal spatiotemporal attention and 3D-RoPE. Current visual foundation models are fragmented, specializing separately in image semantic perception, offline temporal modeling, or spatial geometry. OmniStream enables causal streaming inference via persistent KV-cache, avoiding recomputation over past frames. Multi-task pre-training framework couples three complementary signals: static and temporal representation learning (self-supervised student-teacher distillation unifying image representation with causal video modeling); streaming geometric reconstruction (lightweight feedforward dual DPT and camera heads predicting depth maps, ray maps, and camera poses); vision-language alignment (lightweight autoregressive language decoder). Experiments show that even with strictly frozen backbone, OmniStream maintains competitive performance with specialized experts across image/video probing, streaming geometric reconstruction, complex video and spatial reasoning, and robotic manipulation (unseen at training). For real-time audio-driven music-to-dance generation, this unified streaming backbone provides a directly deployable technical foundation.",
+        keyPoints: [
+          "Unified streaming visual backbone: causal spatiotemporal attention + 3D-RoPE supports frame-by-frame online processing",
+          "Persistent KV-cache enables efficient streaming inference, avoiding historical frame recomputation",
+          "Multi-task pre-training couples static/temporal representation, geometric reconstruction, and vision-language alignment"
+        ],
+        href: "https://arxiv.org/abs/2603.12265",
+        paperLink: "OmniStream: Mastering Perception, Reconstruction and Action in Continuous Streams",
+      },
+      {
+        num: 5,
+        tag: "Depth Estimation",
+        title: "DVD: Deterministic Video Depth Estimation with Generative Priors",
+        description: "DVD proposes the first framework to deterministically adapt pre-trained video diffusion models into single-pass depth regressors, addressing the trade-off between generative models' stochastic geometric hallucinations and discriminative models' dependence on massive labeled datasets. Core designs include: repurposing diffusion timestep as structural anchor—balancing low-frequency geometric stability with high-frequency spatial details; latent manifold rectification (LMR)—via parameter-free supervision aligning latent differentials, mitigating regression-induced spatiotemporal 'mean collapse' and restoring sharp boundaries and coherent motion; global affine coherence—discovering that deterministic backbone inherently bounds inter-window divergence, enabling seamless affine-alignment sliding-window inference for long videos without complex latent stitching. Experiments show DVD achieves SOTA zero-shot performance across benchmarks, unlocking rich geometric priors in foundation models using less than 1% of task-specific data compared to leading baselines. For dance video generation, DVD's techniques can ensure geometric consistency and 3D structural plausibility of generated videos.",
+        keyPoints: [
+          "First framework to deterministically adapt pre-trained video diffusion models into depth regressors, avoiding stochastic sampling hallucinations",
+          "Timestep as structural anchor balances geometric stability with detail precision, LMR restores sharp boundaries",
+          "Global affine coherence enables seamless long-video inference without complex temporal alignment"
+        ],
+        href: "https://arxiv.org/abs/2603.12250",
+        paperLink: "DVD: Deterministic Video Depth Estimation with Generative Priors",
       },
     ],
     worthReading: [
       {
-        num: 2,
-        title: "Attention-Guided Visual Anchoring and Reflection",
-        tag: "Multimodal Reasoning",
-        href: "https://arxiv.org/abs/2603.03825",
-        description: "Proposes VAS metric to quantify model attention to visual tokens, finding strong correlation (r=0.9616) between reasoning performance and VAS. Can inspire 3D Audio Attention diagnostics.",
+        num: 6,
+        title: "ELIT: Elastic Latent Interfaces for Diffusion Transformers",
+        tag: "Computational Efficiency",
+        href: "https://arxiv.org/abs/2603.12245",
+        description: "Learnable variable-length latent interface dynamically adjusts token count based on compute budget, inspiring compute-quality trade-offs for real-time generation.",
+      },
+      {
+        num: 7,
+        title: "EvoTok: Unified Image Tokenizer via Residual Latent Evolution",
+        tag: "Tokenizer",
+        href: "https://arxiv.org/abs/2603.12108",
+        description: "Residual vector quantization trajectory unifies visual understanding and generation, relevant for multi-granularity representation learning in dance videos.",
+      },
+      {
+        num: 8,
+        title: "GRADE: Benchmarking Discipline-Informed Reasoning in Image Editing",
+        tag: "Evaluation Benchmark",
+        href: "https://arxiv.org/abs/2603.12264",
+        description: "Multi-dimensional evaluation protocol (reasoning, consistency, readability) provides reference for dance video generation quality assessment design.",
+      },
+      {
+        num: 9,
+        title: "Mobile-GS: Real-time Gaussian Splatting for Mobile Devices",
+        tag: "Mobile Rendering",
+        href: "https://arxiv.org/abs/2603.11531",
+        description: "Depth-aware order-independent rendering and neural enhancement strategies relevant for real-time dance video rendering on mobile devices.",
+      },
+      {
+        num: 10,
+        title: "ShotVerse: Cinematic Camera Control for Multi-Shot Video Generation",
+        tag: "Camera Control",
+        href: "https://arxiv.org/abs/2603.11421",
+        description: "VLM-based Planner generates cinematic trajectories from text, valuable for multi-shot camera motion control in dance videos.",
       },
     ],
-    observation: "Limited paper volume today (only 4 papers), but PureCC's dual-branch training concept offers direct inspiration for appearance preservation in video generation. Current music-to-dance patch-shuffling strategies may inadvertently compromise the original model's ability to generate natural motions when transferring reference person appearance. Drawing from PureCC's 'frozen branch preserves original capability + trainable branch learns target' architecture, a similar decoupled approach could be designed: freeze original diffusion model's motion-related layers while only training appearance adaptation modules, achieving better identity preservation while maintaining motion quality.",
+    observation: "March 10 papers reveal two major trends: identity preservation and multi-subject control—DreamVideo-Omni's group/role embeddings and LIRM provide technical paths for multi-person dance scenes; and computational efficiency and adaptability—EVATok's adaptive token allocation and ELIT's elastic latent interface optimize resource usage for real-time dance generation. Spatial-TTT's test-time training and OmniStream's unified streaming backbone further support long-sequence and real-time processing. DVD's deterministic depth estimation provides new tools for geometric consistency in generated videos. For music-to-dance systems, these technologies can be combined: EVATok optimizes token efficiency, DreamVideo-Omni's identity mechanisms maintain reference subject consistency, OmniStream provides streaming inference foundation, and DVD ensures geometric plausibility.",
   },
 }
 
