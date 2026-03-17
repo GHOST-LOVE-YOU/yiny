@@ -158,6 +158,14 @@ export const registry: DigestMeta[] = [
     mustReadCount: 3,
     worthReadingCount: 4,
   },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-03-16",
+    title: { zh: "身份保持与运动控制的统一框架 · 自适应视频Token化", en: "Unified Identity Preservation & Motion Control · Adaptive Video Tokenization" },
+    mustReadCount: 3,
+    worthReadingCount: 5,
+  },
 ]
 
 export function getAllRoleIds(): string[] {
