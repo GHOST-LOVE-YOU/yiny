@@ -32,7 +32,7 @@ const content = {
         num: 2,
         tag: "跨模态对齐",
         title: "EagleNet：能量感知的细粒度文本-视频关系学习",
-        description: "EagleNet 针对文本-视频检索中文本表达力不足的问题，提出 Fine-Grained Relationship Learning (FRL) 机制。与仅关注文本-帧交互的方法不同，FRL 构建文本-帧关系图，同时学习文本与帧之间、帧与帧之间的关系，将帧上下文信息聚合到 enriched text embedding 中。Energy-Aware Matching (EAM) 进一步引入能量模型建模细粒度交互。对于 music-to-dance 任务，这一思路可直接迁移：将音乐特征视为"文本"，舞蹈帧视为"视频"，构建音乐-帧关系图来学习节拍与动作的细粒度对齐。Sigmoid loss 替代 softmax contrastive loss 的设计也适用于多对多的音乐-舞蹈匹配场景。",
+        description: "EagleNet 针对文本-视频检索中文本表达力不足的问题，提出 Fine-Grained Relationship Learning (FRL) 机制。与仅关注文本-帧交互的方法不同，FRL 构建文本-帧关系图，同时学习文本与帧之间、帧与帧之间的关系，将帧上下文信息聚合到 enriched text embedding 中。Energy-Aware Matching (EAM) 进一步引入能量模型建模细粒度交互。对于 music-to-dance 任务，这一思路可直接迁移：将音乐特征视为「文本」，舞蹈帧视为「视频」，构建音乐-帧关系图来学习节拍与动作的细粒度对齐。Sigmoid loss 替代 softmax contrastive loss 的设计也适用于多对多的音乐-舞蹈匹配场景。",
         keyPoints: [
           "FRL 关系图学习：同时建模文本-帧和帧-帧关系，捕获时序上下文",
           "EAM 能量匹配：用能量模型建模细粒度交互分布",
@@ -58,7 +58,7 @@ const content = {
         num: 4,
         tag: "动作生成",
         title: "BiMD：跨语言文本到动作生成的对齐策略",
-        description: "⚠️ 基于摘要：BiMD 提出首个双语文本-动作数据集 BiHumanML3D 和跨语言对齐 (CLA) 策略。通过显式对齐不同语言的语义表示，构建鲁棒的条件空间支持高质量动作生成，包括零样本代码切换场景。对于 music-to-dance 任务，音乐可以视为一种"跨语言"的模态——CLA 的对齐思想可用于将音乐特征（如节拍、旋律、情感）对齐到动作语义空间，实现更精准的音乐-舞蹈条件生成。",
+        description: "⚠️ 基于摘要：BiMD 提出首个双语文本-动作数据集 BiHumanML3D 和跨语言对齐 (CLA) 策略。通过显式对齐不同语言的语义表示，构建鲁棒的条件空间支持高质量动作生成，包括零样本代码切换场景。对于 music-to-dance 任务，音乐可以视为一种「跨语言」的模态——CLA 的对齐思想可用于将音乐特征（如节拍、旋律、情感）对齐到动作语义空间，实现更精准的音乐-舞蹈条件生成。",
         keyPoints: [
           "BiHumanML3D：首个双语文本-动作基准数据集",
           "CLA 跨语言对齐：显式对齐语义表示构建鲁棒条件空间",
@@ -146,7 +146,7 @@ const content = {
         num: 2,
         tag: "Cross-Modal Alignment",
         title: "EagleNet: Energy-Aware Fine-Grained Text-Video Relationship Learning",
-        description: "EagleNet addresses insufficient text expressiveness in text-video retrieval through Fine-Grained Relationship Learning (FRL). Unlike methods focusing only on text-frame interactions, FRL constructs a text-frame relational graph, learning relationships between text-frame and frame-frame to aggregate frame contextual information into enriched text embeddings. Energy-Aware Matching (EAM) further introduces energy models for fine-grained interaction modeling. For music-to-dance, this approach directly transfers: treat music features as 'text' and dance frames as 'video', building a music-frame relational graph to learn beat-to-motion fine-grained alignment. The sigmoid loss design also suits many-to-many music-dance matching scenarios.",
+        description: "EagleNet addresses insufficient text expressiveness in text-video retrieval through Fine-Grained Relationship Learning (FRL). Unlike methods focusing only on text-frame interactions, FRL constructs a text-frame relational graph, learning relationships between text-frame and frame-frame to aggregate frame contextual information into enriched text embeddings. Energy-Aware Matching (EAM) further introduces energy models for fine-grained interaction modeling. For music-to-dance, this approach directly transfers: treat music features as 「text」 and dance frames as 「video」, building a music-frame relational graph to learn beat-to-motion fine-grained alignment. The sigmoid loss design also suits many-to-many music-dance matching scenarios.",
         keyPoints: [
           "FRL relational graph learning: Modeling text-frame and frame-frame relationships simultaneously",
           "EAM energy matching: Using energy models for fine-grained interaction distribution",
@@ -172,7 +172,7 @@ const content = {
         num: 4,
         tag: "Motion Generation",
         title: "BiMD: Cross-Lingual Alignment for Text-to-Motion Generation",
-        description: "⚠️ Based on abstract: BiMD proposes the first bilingual text-motion dataset BiHumanML3D and Cross-Lingual Alignment (CLA) strategy. By explicitly aligning semantic representations across languages, it builds a robust conditional space supporting high-quality motion generation including zero-shot code-switching. For music-to-dance, music can be viewed as a 'cross-lingual' modality—CLA's alignment concept can transfer music features (beat, melody, emotion) to motion semantic space, enabling more precise music-dance conditional generation.",
+        description: "⚠️ Based on abstract: BiMD proposes the first bilingual text-motion dataset BiHumanML3D and Cross-Lingual Alignment (CLA) strategy. By explicitly aligning semantic representations across languages, it builds a robust conditional space supporting high-quality motion generation including zero-shot code-switching. For music-to-dance, music can be viewed as a 「cross-lingual」 modality—CLA's alignment concept can transfer music features (beat, melody, emotion) to motion semantic space, enabling more precise music-dance conditional generation.",
         keyPoints: [
           "BiHumanML3D: First bilingual text-motion benchmark dataset",
           "CLA cross-lingual alignment: Explicit semantic alignment for robust conditional space",
