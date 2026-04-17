@@ -313,6 +313,14 @@ export const registry: DigestMeta[] = [
   {
     roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 研究", en: "Music-to-Dance Research" },
+    date: "2026-04-10",
+    title: { zh: "LPM 1.0: 实时音频驱动角色表演的突破", en: "LPM 1.0: Breakthrough in Real-Time Audio-Driven Character Performance" },
+    mustReadCount: 5,
+    worthReadingCount: 6,
+  },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 研究", en: "Music-to-Dance Research" },
     date: "2026-04-11",
     title: { zh: "LPM 1.0: 实时音频驱动角色表演的突破", en: "LPM 1.0: Breakthrough in Real-Time Audio-Driven Character Performance" },
     mustReadCount: 1,
@@ -326,31 +334,22 @@ export const registry: DigestMeta[] = [
     mustReadCount: 3,
     worthReadingCount: 5,
   },
-]
-
-export function getAllRoleIds(): string[] {
-  const ids = new Set(registry.map(meta => meta.roleId))
-  return Array.from(ids)
-}
-
-export function getByRole(roleId: string): DigestMeta[] {
-  return registry
-    .filter(meta => meta.roleId === roleId)
-    .sort((a, b) => b.date.localeCompare(a.date))
-}
-
-export function getLatestPerRole(): DigestMeta[] {
-  const latestMap = new Map<string, DigestMeta>()
-  for (const meta of registry) {
-    const existing = latestMap.get(meta.roleId)
-    if (!existing || meta.date.localeCompare(existing.date) > 0) {
-      latestMap.set(meta.roleId, meta)
-    }
-  }
-  return Array.from(latestMap.values())
-}
-
-// Helper function to get localized string from bilingual object
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-04-13",
+    title: { zh: "稀疏轨迹预测与高效运动生成新进展", en: "Sparse Trajectory Prediction & Efficient Motion Generation Advances" },
+    mustReadCount: 4,
+    worthReadingCount: 6,
+  },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-04-14",
+    title: { zh: "多模态统一生成与高效视频表征", en: "Multimodal Unified Generation & Efficient Video Representation" },
+    mustReadCount: 2,
+    worthReadingCount: 4,
+  },
   {
     roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
@@ -358,6 +357,14 @@ export function getLatestPerRole(): DigestMeta[] {
     title: { zh: "多模态统一生成与高效视频表征", en: "Multimodal Unified Generation & Efficient Video Representation" },
     mustReadCount: 4,
     worthReadingCount: 7,
+  },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-04-16",
+    title: { zh: "多模态视频生成与世界模型新进展", en: "Advances in Multi-Modal Video Generation and World Models" },
+    mustReadCount: 2,
+    worthReadingCount: 3,
   },
 ]
 
