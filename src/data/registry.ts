@@ -12,6 +12,14 @@ export interface DigestMeta {
 export const registry: DigestMeta[] = [
   {
     roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-04-20",
+    title: { zh: "扩散模型偏差修正与跨模态对齐新进展", en: "New Advances in Diffusion Model Bias Correction and Cross-Modal Alignment" },
+    mustReadCount: 5,
+    worthReadingCount: 5,
+  },
+  {
+    roleId: "music-to-dance",
     roleName: {
       zh: "Music-to-Dance 视频生成研究者",
       en: "Music-to-Dance Video Generation",
