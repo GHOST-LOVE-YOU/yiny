@@ -45,7 +45,7 @@ const content = {
         num: 3,
         tag: "运动生成",
         title: "NMR：神经运动重定向框架攻克人形机器人全身控制",
-        description: "NMR 框架通过将运动重定向问题从静态几何优化重新定义为数据分布学习，有效解决了传统基于优化的方法固有的非凸性和局部最优问题。论文首先通过 Hessian 分析证明了传统优化方法的数学局限性，然后提出了聚类专家物理精炼（CEPR）数据管道：利用 VAE 进行运动聚类，将异构运动分组为潜在 motif，再通过大规模并行强化学习专家策略在物理模拟器中投影和修复噪声人体演示，生成满足动态约束的"真值"运动数据。最终，非自回归 CNN-Transformer 架构在全局时序上下文上进行推理，抑制重构噪声并绕过几何陷阱。在 Unitree G1 人形机器人上的实验涵盖武术、舞蹈等多种动态任务，结果显示 NMR 消除了关节跳跃，显著减少了自碰撞。对于 music-to-dance 研究，NMR 的时序建模方法和物理一致性约束处理对舞蹈动作生成具有直接借鉴意义。",
+        description: "NMR 框架通过将运动重定向问题从静态几何优化重新定义为数据分布学习，有效解决了传统基于优化的方法固有的非凸性和局部最优问题。论文首先通过 Hessian 分析证明了传统优化方法的数学局限性，然后提出了聚类专家物理精炼（CEPR）数据管道：利用 VAE 进行运动聚类，将异构运动分组为潜在 motif，再通过大规模并行强化学习专家策略在物理模拟器中投影和修复噪声人体演示，生成满足动态约束的真值运动数据。最终，非自回归 CNN-Transformer 架构在全局时序上下文上进行推理，抑制重构噪声并绕过几何陷阱。在 Unitree G1 人形机器人上的实验涵盖武术、舞蹈等多种动态任务，结果显示 NMR 消除了关节跳跃，显著减少了自碰撞。对于 music-to-dance 研究，NMR 的时序建模方法和物理一致性约束处理对舞蹈动作生成具有直接借鉴意义。",
         keyPoints: [
           "通过 Hessian 分析从理论上证明传统优化方法的非凸性局限",
           "CEPR 数据管道结合 VAE 运动聚类和 RL 专家策略生成物理一致的训练数据",
@@ -71,7 +71,7 @@ const content = {
         num: 5,
         tag: "Flow Matching",
         title: "LeapAlign：通过两步轨迹实现 Flow Matching 模型的任意步对齐",
-        description: "LeapAlign 解决了 Flow Matching 模型后训练中的关键难题：长轨迹反向传播的内存开销和梯度爆炸问题导致早期生成步骤难以更新，而早期步骤对最终图像的全局结构至关重要。论文提出构建"跳跃轨迹"——从完整轨迹中随机选择两个时间步 k > j，通过单步跳跃预测（ˆxj|k = xk - (k-j)vθ(xk)）构建仅有两步的缩短轨迹进行微调。这种方法保持内存成本恒定，允许直接更新任意生成步骤。为进一步稳定训练，论文提出梯度折扣机制：降低大幅值梯度项的权重而非完全移除，从而保留 DRTune 丢弃的有用学习信号；同时引入轨迹相似性加权，使更接近真实路径的跳跃轨迹获得更高权重。在 FLUX 模型上的实验表明，LeapAlign 在图像质量和图文对齐方面均优于 GRPO 和直接梯度方法。对于 music-to-dance 生成模型的偏好对齐训练，LeapAlign 提供了一种高效稳定的早期步骤微调方案。",
+        description: "LeapAlign 解决了 Flow Matching 模型后训练中的关键难题：长轨迹反向传播的内存开销和梯度爆炸问题导致早期生成步骤难以更新，而早期步骤对最终图像的全局结构至关重要。论文提出构建跳跃轨迹——从完整轨迹中随机选择两个时间步 k > j，通过单步跳跃预测构建仅有两步的缩短轨迹进行微调。这种方法保持内存成本恒定，允许直接更新任意生成步骤。为进一步稳定训练，论文提出梯度折扣机制：降低大幅值梯度项的权重而非完全移除，从而保留 DRTune 丢弃的有用学习信号；同时引入轨迹相似性加权，使更接近真实路径的跳跃轨迹获得更高权重。在 FLUX 模型上的实验表明，LeapAlign 在图像质量和图文对齐方面均优于 GRPO 和直接梯度方法。对于 music-to-dance 生成模型的偏好对齐训练，LeapAlign 提供了一种高效稳定的早期步骤微调方案。",
         keyPoints: [
           "两步跳跃轨迹设计使早期生成步骤的微调成为可能",
           "梯度折扣机制保留有用梯度信号，避免完全移除嵌套梯度项",
@@ -94,7 +94,7 @@ const content = {
         title: "GlobalSplat：基于全局场景 Token 的高效前馈 3D 高斯渲染",
         tag: "3D 渲染",
         href: "https://arxiv.org/abs/2604.15284",
-        description: "通过"先对齐后解码"原则学习紧凑的全局隐式场景表示，仅需 16K 高斯即可实现高质量渲染，对 dance 视频中的人体建模和渲染加速有潜在价值。",
+        description: "通过先对齐后解码原则学习紧凑的全局隐式场景表示，仅需 16K 高斯即可实现高质量渲染，对 dance 视频中的人体建模和渲染加速有潜在价值。",
       },
       {
         num: 8,
@@ -159,7 +159,7 @@ const content = {
         num: 3,
         tag: "Motion Generation",
         title: "NMR: Neural Motion Retargeting Framework for Humanoid Whole-Body Control",
-        description: "The NMR framework reformulates motion retargeting from static geometric optimization to data distribution learning, effectively addressing the inherent non-convexity and local optima problems of traditional optimization-based methods. The paper first proves the mathematical limitations of traditional optimization methods through Hessian analysis, then proposes the Clustered-Expert Physics Refinement (CEPR) data pipeline: using VAE for motion clustering to group heterogeneous movements into latent motifs, then training massively parallel RL expert policies to project and repair noisy human demonstrations in physics simulators, generating "ground-truth" motions satisfying dynamic constraints. Finally, a non-autoregressive CNN-Transformer architecture reasons over global temporal context to suppress reconstruction noise and bypass geometric traps. Experiments on Unitree G1 humanoid across diverse dynamic tasks including martial arts and dancing show NMR eliminates joint jumps and significantly reduces self-collisions. For music-to-dance research, NMR's temporal modeling methods and physical consistency constraint handling have direct reference value for dance motion generation.",
+        description: "The NMR framework reformulates motion retargeting from static geometric optimization to data distribution learning, effectively addressing the inherent non-convexity and local optima problems of traditional optimization-based methods. The paper first proves the mathematical limitations of traditional optimization methods through Hessian analysis, then proposes the Clustered-Expert Physics Refinement (CEPR) data pipeline: using VAE for motion clustering to group heterogeneous movements into latent motifs, then training massively parallel RL expert policies to project and repair noisy human demonstrations in physics simulators, generating ground-truth motions satisfying dynamic constraints. Finally, a non-autoregressive CNN-Transformer architecture reasons over global temporal context to suppress reconstruction noise and bypass geometric traps. Experiments on Unitree G1 humanoid across diverse dynamic tasks including martial arts and dancing show NMR eliminates joint jumps and significantly reduces self-collisions. For music-to-dance research, NMR's temporal modeling methods and physical consistency constraint handling have direct reference value for dance motion generation.",
         keyPoints: [
           "Theoretically proves non-convexity limitations of traditional optimization methods through Hessian analysis",
           "CEPR pipeline combines VAE motion clustering and RL expert policies to generate physically consistent training data",
@@ -185,7 +185,7 @@ const content = {
         num: 5,
         tag: "Flow Matching",
         title: "LeapAlign: Aligning Flow Matching Models at Any Generation Step via Two-Step Trajectories",
-        description: "LeapAlign addresses a critical challenge in Flow Matching model post-training: the memory overhead and gradient explosion from long-trajectory backpropagation make early generation steps difficult to update, yet early steps are crucial for the global structure of the final image. The paper proposes constructing 'leap trajectories'—randomly selecting two timesteps k > j from the full trajectory and building a shortened two-step trajectory through one-step leap prediction (ˆxj|k = xk - (k-j)vθ(xk)) for fine-tuning. This approach maintains constant memory cost and allows direct updates to any generation step. To further stabilize training, the paper proposes gradient discounting: reducing weights of large-magnitude gradient terms rather than completely removing them, thus preserving useful learning signals that DRTune discards; and trajectory-similarity weighting to amplify learning signals from leap trajectories closer to the true generation path. Experiments on FLUX show LeapAlign outperforms GRPO and direct gradient methods in both image quality and image-text alignment. For music-to-dance generation model preference alignment training, LeapAlign provides an efficient and stable early-step fine-tuning solution.",
+        description: "LeapAlign addresses a critical challenge in Flow Matching model post-training: the memory overhead and gradient explosion from long-trajectory backpropagation make early generation steps difficult to update, yet early steps are crucial for the global structure of the final image. The paper proposes constructing leap trajectories—randomly selecting two timesteps k > j from the full trajectory and building a shortened two-step trajectory through one-step leap prediction for fine-tuning. This approach maintains constant memory cost and allows direct updates to any generation step. To further stabilize training, the paper proposes gradient discounting: reducing weights of large-magnitude gradient terms rather than completely removing them, thus preserving useful learning signals that DRTune discards; and trajectory-similarity weighting to amplify learning signals from leap trajectories closer to the true generation path. Experiments on FLUX show LeapAlign outperforms GRPO and direct gradient methods in both image quality and image-text alignment. For music-to-dance generation model preference alignment training, LeapAlign provides an efficient and stable early-step fine-tuning solution.",
         keyPoints: [
           "Two-step leap trajectory design enables fine-tuning of early generation steps",
           "Gradient discounting preserves useful gradient signals instead of completely removing nested gradient terms",
@@ -208,7 +208,7 @@ const content = {
         title: "GlobalSplat: Efficient Feed-Forward 3D Gaussian Splatting via Global Scene Tokens",
         tag: "3D Rendering",
         href: "https://arxiv.org/abs/2604.15284",
-        description: "Learns compact global implicit scene representation through 'align first, decode later' principle, achieving high-quality rendering with only 16K Gaussians, with potential value for human body modeling and rendering acceleration in dance videos.",
+        description: "Learns compact global implicit scene representation through align first, decode later principle, achieving high-quality rendering with only 16K Gaussians, with potential value for human body modeling and rendering acceleration in dance videos.",
       },
       {
         num: 8,
