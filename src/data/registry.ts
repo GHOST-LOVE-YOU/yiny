@@ -12,6 +12,14 @@ export interface DigestMeta {
 export const registry: DigestMeta[] = [
   {
     roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-04-20",
+    title: { zh: "扩散模型偏差修正与跨模态对齐新进展", en: "New Advances in Diffusion Model Bias Correction and Cross-Modal Alignment" },
+    mustReadCount: 5,
+    worthReadingCount: 5,
+  },
+  {
+    roleId: "music-to-dance",
     roleName: {
       zh: "Music-to-Dance 视频生成研究者",
       en: "Music-to-Dance Video Generation",
@@ -379,6 +387,14 @@ export const registry: DigestMeta[] = [
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2026-04-19",
     title: { zh: "多模态音视频生成新进展：Seedance 2.0 与跨模态对齐技术", en: "Multimodal Audio-Video Generation Advances: Seedance 2.0 and Cross-Modal Alignment" },
+    mustReadCount: 3,
+    worthReadingCount: 5,
+  },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-04-21",
+    title: { zh: "多智能体世界模型与视频生成加速：舞蹈生成的新工具", en: "Multi-Agent World Models & Video Generation Acceleration: New Tools for Dance Generation" },
     mustReadCount: 3,
     worthReadingCount: 5,
   },
