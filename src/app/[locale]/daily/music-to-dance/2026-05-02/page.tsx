@@ -10,7 +10,7 @@ const content = {
     roleName: "Music-to-Dance 视频生成研究者",
     title: "2026-05-02 | 视觉生成新纪元：从原子映射到智能世界建模",
     overview: [
-      "视觉生成领域正经历从'像素渲染'到'智能世界建模'的范式转变",
+      "视觉生成领域正经历从「像素渲染」到「智能世界建模」的范式转变",
       "ExoActor 提出用第三人称视频生成作为人形机器人控制的新范式",
       "PhyCo 将物理一致性控制引入视频生成，为舞蹈动作的真实感提供新思路"
     ],
@@ -32,7 +32,7 @@ const content = {
         num: 2,
         tag: "视频生成与控制",
         title: "ExoActor：用第三人称视频生成实现可泛化的人形机器人交互控制",
-        description: "ExoActor 的核心创新是将视频生成模型作为人形机器人控制的统一接口。系统首先通过 robot-to-human embodiment transfer 将机器人视角转换为人形视角，然后生成任务执行的第三人称视频，再通过运动估计模块提取 3D 人体运动，最后由通用运动控制器执行。这一"视觉想象→物理执行"的范式对 music-to-dance 极具启发：我们可以将音频作为条件，生成目标人物跟随音乐起舞的视频，再从中提取舞蹈动作。论文中的动作分解（Task-to-Action Decomposition）和分步提示构造方法，可直接迁移到音频驱动的舞蹈生成——将音乐节拍分解为具体的动作单元，再逐段生成视频。此外，论文对视频生成模型（Kling、Veo、Wan）的对比分析也为舞蹈视频生成模型的选型提供了参考。",
+        description: "ExoActor 的核心创新是将视频生成模型作为人形机器人控制的统一接口。系统首先通过 robot-to-human embodiment transfer 将机器人视角转换为人形视角，然后生成任务执行的第三人称视频，再通过运动估计模块提取 3D 人体运动，最后由通用运动控制器执行。这一「视觉想象→物理执行」的范式对 music-to-dance 极具启发：我们可以将音频作为条件，生成目标人物跟随音乐起舞的视频，再从中提取舞蹈动作。论文中的动作分解（Task-to-Action Decomposition）和分步提示构造方法，可直接迁移到音频驱动的舞蹈生成——将音乐节拍分解为具体的动作单元，再逐段生成视频。此外，论文对视频生成模型（Kling、Veo、Wan）的对比分析也为舞蹈视频生成模型的选型提供了参考。",
         keyPoints: [
           "提出'视频生成+运动估计+运动执行'的三阶段范式，实现零样本任务泛化",
           "Robot-to-Human Embodiment Transfer 技术解决机器人与人体形态差异问题",
@@ -120,7 +120,7 @@ const content = {
         num: 2,
         tag: "Video Generation & Control",
         title: "ExoActor: Exocentric Video Generation for Generalizable Interactive Humanoid Control",
-        description: "ExoActor's core innovation is using video generation models as a unified interface for humanoid robot control. The system first converts robot perspective to human-like perspective via robot-to-human embodiment transfer, then generates third-person videos of task execution, extracts 3D human motion through motion estimation, and finally executes via a general motion controller. This 'visual imagination → physical execution' paradigm is highly inspiring for music-to-dance: we can use audio as a condition to generate videos of target characters dancing to music, then extract dance motions from them. The paper's action decomposition (Task-to-Action Decomposition) and step-wise prompt construction methods can be directly transferred to audio-driven dance generation—decomposing music beats into specific action units and generating videos segment by segment. Additionally, the comparative analysis of video generation models (Kling, Veo, Wan) provides reference for model selection in dance video generation.",
+        description: "ExoActor's core innovation is using video generation models as a unified interface for humanoid robot control. The system first converts robot perspective to human-like perspective via robot-to-human embodiment transfer, then generates third-person videos of task execution, extracts 3D human motion through motion estimation, and finally executes via a general motion controller. This 「visual imagination → physical execution」 paradigm is highly inspiring for music-to-dance: we can use audio as a condition to generate videos of target characters dancing to music, then extract dance motions from them. The paper's action decomposition (Task-to-Action Decomposition) and step-wise prompt construction methods can be directly transferred to audio-driven dance generation—decomposing music beats into specific action units and generating videos segment by segment. Additionally, the comparative analysis of video generation models (Kling, Veo, Wan) provides reference for model selection in dance video generation.",
         keyPoints: [
           "Proposes a three-stage paradigm of 'video generation + motion estimation + motion execution' for zero-shot task generalization",
           "Robot-to-Human Embodiment Transfer technique addresses the morphological gap between robots and humans",
@@ -180,7 +180,7 @@ const content = {
         description: "Verifier-based reinforcement learning methods can be used to optimize reward models for dance motion generation, improving controllability of motion quality.",
       },
     ],
-    observation: "This week's papers send a clear signal: the visual generation field is evolving from 'appearance synthesis' toward 'physically consistent, temporally coherent, causally reasonable' intelligent generation. For music-to-dance tasks, this means we need to focus not only on making generated dances 'look right,' but also on making motions 'physically plausible, temporally coherent, and stylistically controllable.' ExoActor and PhyCo represent two key directions: the former demonstrates the feasibility of video generation as a motion control interface, while the latter provides controllable generation methods under physical constraints. Combining these two approaches—using audio-conditioned dance video generation while introducing physical consistency constraints—may be an important path toward improving dance generation quality.",
+    observation: "This week's papers send a clear signal: the visual generation field is evolving from 「appearance synthesis」 toward 「physically consistent, temporally coherent, causally reasonable」 intelligent generation. For music-to-dance tasks, this means we need to focus not only on making generated dances 「look right」, but also on making motions 「physically plausible, temporally coherent, and stylistically controllable」. ExoActor and PhyCo represent two key directions: the former demonstrates the feasibility of video generation as a motion control interface, while the latter provides controllable generation methods under physical constraints. Combining these two approaches—using audio-conditioned dance video generation while introducing physical consistency constraints—may be an important path toward improving dance generation quality.",
   },
 }
 
