@@ -446,6 +446,14 @@ export const registry: DigestMeta[] = [
     mustReadCount: 3,
     worthReadingCount: 4,
   },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-05-09",
+    title: { zh: "高分辨率生成与个性化技术的新进展", en: "Advances in High-Resolution Generation and Personalization" },
+    mustReadCount: 3,
+    worthReadingCount: 4,
+  },
 ]
 
 export function getAllRoleIds(): string[] {
@@ -477,3 +485,4 @@ export function getLocalized<T extends { zh: string; en: string }>(
 ): string {
   return obj[locale]
 }
+
