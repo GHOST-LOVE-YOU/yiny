@@ -12,6 +12,22 @@ export interface DigestMeta {
 export const registry: DigestMeta[] = [
   {
     roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 研究者", en: "Music-to-Dance Researcher" },
+    date: "2026-05-30",
+    title: { zh: "音视频对齐新范式与实时视频生成框架", en: "Audio-Visual Alignment Paradigm and Real-Time Video Generation Framework" },
+    mustReadCount: 3,
+    worthReadingCount: 4,
+  },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-05-29",
+    title: { zh: "音视频对齐与世界模型：舞蹈生成的新基建", en: "Audio-Visual Alignment & World Models: New Infrastructure for Dance Generation" },
+    mustReadCount: 4,
+    worthReadingCount: 5,
+  },
+  {
+    roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2026-05-27",
     title: { zh: "音频驱动生成与长视频评估新基准", en: "Audio-Driven Generation & Long-Video Evaluation Benchmarks" },
