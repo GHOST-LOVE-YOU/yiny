@@ -13,6 +13,22 @@ export const registry: DigestMeta[] = [
   {
     roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-06-07",
+    title: { zh: "视频生成的物理一致性与高效条件机制", en: "Physical Consistency and Efficient Conditioning for Video Generation" },
+    mustReadCount: 3,
+    worthReadingCount: 5,
+  },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 研究者", en: "Music-to-Dance Researcher" },
+    date: "2026-06-02",
+    title: { zh: "视频生成的测试时优化与长时序一致性", en: "Test-Time Optimization & Long-Horizon Consistency for Video Generation" },
+    mustReadCount: 4,
+    worthReadingCount: 3,
+  },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2026-06-01",
     title: { zh: "视频统一生成与长序列一致性", en: "Unified Video Generation & Long-Sequence Consistency" },
     mustReadCount: 4,
