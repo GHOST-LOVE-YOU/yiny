@@ -11,6 +11,22 @@ export interface DigestMeta {
 
 export const registry: DigestMeta[] = [
   {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-06-18",
+    title: { zh: "扩散Transformer与流匹配：音视频对齐和身份保持的新进展", en: "Diffusion Transformers & Flow Matching: Advances in Audio-Visual Alignment and Identity Preservation" },
+    mustReadCount: 5,
+    worthReadingCount: 8,
+  },
+  {
+    roleId: "music_to_dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2025-06-17",
+    title: { zh: "世界模型与扩散生成：从交互式视频到频谱优化", en: "World Models & Diffusion Generation: From Interactive Video to Spectral Optimization" },
+    mustReadCount: 5,
+    worthReadingCount: 6,
+  },
+  {
     roleId: "music_to_dance",
     roleName: { zh: "Music-to-Dance 研究", en: "Music-to-Dance Research" },
     date: "2026-06-16",
