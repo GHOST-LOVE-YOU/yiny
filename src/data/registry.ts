@@ -13,6 +13,14 @@ export const registry: DigestMeta[] = [
   {
     roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-06-21",
+    title: { zh: "风格解耦与反馈校正：提升可控视频生成的新思路", en: "Style Disentanglement & Feedback Correction: New Directions for Controllable Video Generation" },
+    mustReadCount: 4,
+    worthReadingCount: 4,
+  },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2026-06-20",
     title: { zh: "风格解耦与视频控制：从社区LoRA到导演级空间编排", en: "Style Disentanglement & Video Control: From Community LoRA to Directorial Spatial Orchestration" },
     mustReadCount: 4,
