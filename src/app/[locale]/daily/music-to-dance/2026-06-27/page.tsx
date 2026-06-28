@@ -45,7 +45,7 @@ const content = {
         num: 3,
         tag: "4D Human Video Generation",
         title: "TryOnCrafter：基于可渲染 4D Proxy 的相机可控视频试穿",
-        description: "TryOnCrafter 将视频虚拟试穿（VVT）扩展到相机可控场景（CaM-VVT），解决了传统方法受限于输入相机轨迹的问题。该方法构建 Renderable 4D Try-on Proxy，将高质量 2D 试穿先验蒸馏到基于 3DGS 的着装 avatar，并通过 SMPL-X 序列驱动动画。关键创新在于 anchor-based alignment：利用动态点云的人体组件作为几何锚点，通过置信度感知的点-表面对齐优化，将相机空间估计的 SMPL-X 序列映射到世界空间的度量尺度，解决单目重建的尺度歧义。Proxy-Anchored Video DiT 将渲染的 proxy 序列作为主要几何锚点，结合源视频特征和文本条件生成最终视频。该框架支持任意相机轨迹下的高保真试穿，并天然支持人体重定位、"子弹时间"效果和 360 度轨道视角等下游应用。",
+        description: "TryOnCrafter 将视频虚拟试穿（VVT）扩展到相机可控场景（CaM-VVT），解决了传统方法受限于输入相机轨迹的问题。该方法构建 Renderable 4D Try-on Proxy，将高质量 2D 试穿先验蒸馏到基于 3DGS 的着装 avatar，并通过 SMPL-X 序列驱动动画。关键创新在于 anchor-based alignment：利用动态点云的人体组件作为几何锚点，通过置信度感知的点-表面对齐优化，将相机空间估计的 SMPL-X 序列映射到世界空间的度量尺度，解决单目重建的尺度歧义。Proxy-Anchored Video DiT 将渲染的 proxy 序列作为主要几何锚点，结合源视频特征和文本条件生成最终视频。该框架支持任意相机轨迹下的高保真试穿，并天然支持人体重定位、子弹时间效果和 360 度轨道视角等下游应用。",
         keyPoints: [
           "Anchor-based alignment 利用动态点云人体组件作为几何锚点，通过相似变换将 SMPL-X 从相机空间对齐到世界空间",
           "3DGS-based clothed avatar 蒸馏 2D 试穿先验，结合 SMPL-X 驱动实现高保真纹理密度和运动完整性",
