@@ -12,6 +12,14 @@ export interface DigestMeta {
 export const registry: DigestMeta[] = [
   {
     roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 研究", en: "Music-to-Dance Research" },
+    date: "2026-06-28",
+    title: { zh: "4D人体建模与视频生成的技术融合", en: "4D Human Modeling Meets Video Generation" },
+    mustReadCount: 3,
+    worthReadingCount: 5,
+  },
+  {
+    roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2026-06-27",
     title: { zh: "外观保持与几何一致性：跨域视频生成的关键技术", en: "Appearance Preservation & Geometric Consistency: Key Techniques for Cross-Domain Video Generation" },
