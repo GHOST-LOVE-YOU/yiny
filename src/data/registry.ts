@@ -13,6 +13,14 @@ export const registry: DigestMeta[] = [
   {
     roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-07-04",
+    title: { zh: "扩散加速与可控生成：从 10x 提速到持久动态记忆", en: "Diffusion Acceleration & Controllable Generation: From 10x Speedup to Persistent Dynamic Memory" },
+    mustReadCount: 5,
+    worthReadingCount: 4,
+  },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2026-07-03",
     title: { zh: "扩散模型加速与可控生成：从推理优化到世界模拟", en: "Diffusion Acceleration & Controllable Generation: From Inference Optimization to World Simulation" },
     mustReadCount: 5,
