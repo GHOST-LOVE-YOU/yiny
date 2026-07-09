@@ -13,6 +13,14 @@ export const registry: DigestMeta[] = [
   {
     roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-07-08",
+    title: { zh: "音乐流派感知与多视角一致性：舞蹈生成的跨域启发", en: "Genre-Aware Music Understanding & Multi-View Consistency" },
+    mustReadCount: 3,
+    worthReadingCount: 4,
+  },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2026-07-07",
     title: { zh: "音视频对齐与身份一致性：从跨模态注意力到运动先验", en: "Audio-Visual Alignment & Identity Consistency: From Cross-Modal Attention to Motion Priors" },
     mustReadCount: 5,
