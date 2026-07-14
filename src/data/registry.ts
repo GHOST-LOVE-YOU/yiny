@@ -12,6 +12,14 @@ export interface DigestMeta {
 export const registry: DigestMeta[] = [
   {
     roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 研究", en: "Music-to-Dance Research" },
+    date: "2026-07-13",
+    title: { zh: "分钟级舞蹈生成与视频扩散的通用视觉智能", en: "Minute-Scale Dance Generation & General-Purpose Visual Intelligence from Video Diffusion" },
+    mustReadCount: 4,
+    worthReadingCount: 5,
+  },
+  {
+    roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2026-07-12",
     title: { zh: "实时交互生成与长程一致性：自回归扩散在动作与视频生成中的新进展", en: "Real-Time Interactive Generation & Long-Horizon Consistency: Advances in Autoregressive Diffusion for Motion and Video" },
