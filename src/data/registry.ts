@@ -13,6 +13,22 @@ export const registry: DigestMeta[] = [
   {
     roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-07-23",
+    title: { zh: "长视频外推与动作控制：自回归扩散的新突破", en: "Long Video Extrapolation & Motion Control: New Breakthroughs in Autoregressive Diffusion" },
+    mustReadCount: 4,
+    worthReadingCount: 5,
+  },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-07-21",
+    title: { zh: "视频时序定位与扩散推理对齐：舞蹈生成的新工具", en: "Video Temporal Grounding & Diffusion Inference Alignment: New Tools for Dance Generation" },
+    mustReadCount: 5,
+    worthReadingCount: 8,
+  },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2026-07-20",
     title: { zh: "音视频对齐与高效推理", en: "Audio-Visual Alignment & Efficient Inference" },
     mustReadCount: 4,
