@@ -39,11 +39,11 @@ npm install
 # 启动开发服务器
 npm run dev
 
-# 构建生产版本（静态导出）
+# 构建生产版本（静态导出到 out/）
 npm run build
 
-# 预览构建结果
-npm run start
+# 本地预览导出的静态站点
+npx serve out
 ```
 
 访问 [http://localhost:3000](http://localhost:3000) 查看网站。
@@ -233,6 +233,22 @@ npm run dev
 - `http://localhost:3000/zh/daily/your-topic/2025-03-02`
 - `http://localhost:3000/en/daily/your-topic/2025-03-02`
 
+## 本地采集候选论文
+
+使用本地 CLI 从 arXiv 和 Hugging Face Papers 收集候选，按 Music-to-Dance 主题词去重并排序：
+
+```bash
+npm run collect:digest
+```
+
+结果写入被 Git 忽略的 `digests/`：一份可审核的 JSON 和一份中英混合 Markdown 草稿。该命令不会修改 `registry.ts`、创建站点页面或发布内容。可通过参数指定日期、候选数量和输出目录：
+
+```bash
+npm run collect:digest -- --date 2026-08-16 --limit 50 --output-dir /tmp/yiny-digests
+```
+
+当某一来源不可达时，命令会在草稿中记录来源告警并继续处理其他来源；发布前仍需人工审核论文关联性、补充双语解读，再手动创建日报页面。
+
 ## 组件说明
 
 ### Digest 组件
@@ -257,7 +273,7 @@ npm run dev
 npm run build
 ```
 
-构建完成后，静态文件将生成在 `out/` 目录中，可直接部署到任何静态托管服务（如 Vercel、Netlify、GitHub Pages）。
+构建完成后，静态文件将生成在 `out/` 目录中，可用 `npx serve out` 本地预览，或直接部署到任何静态托管服务（如 Netlify、GitHub Pages）。
 
 ## License
 

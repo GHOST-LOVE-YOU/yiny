@@ -263,8 +263,8 @@ export async function generateMetadata({
     title: c.title,
     alternates: {
       languages: {
-        'zh-CN': `/zh/daily/music_to_dance/2025-06-17`,
-        'en': `/en/daily/music_to_dance/2025-06-17`,
+        'zh-CN': `/zh/daily/music-to-dance/2025-06-17`,
+        'en': `/en/daily/music-to-dance/2025-06-17`,
       },
     },
   }
@@ -282,7 +282,7 @@ export default async function Page({
     <DigestLayout
       locale={locale}
       date="2025-06-17"
-      roleId="music_to_dance"
+      roleId="music-to-dance"
       roleName={c.roleName}
       title={c.title}
       overview={c.overview}

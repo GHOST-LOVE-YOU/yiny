@@ -2,7 +2,7 @@ import {
   DigestLayout, MustRead, Paper, KeyPoints, PaperLink,
   WorthReading, NotableItem, Observation
 } from '@/components/digest'
-import { getUI, type Locale, locales } from '@/lib/i18n'
+import { type Locale } from '@/lib/i18n'
 import type { Metadata } from 'next'
 
 const content = {
@@ -294,8 +294,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
 export default async function Page({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params
   const ui = content[locale] || content.zh
-  const t = await getUI(locale)
-
   return (
     <DigestLayout
       locale={locale}

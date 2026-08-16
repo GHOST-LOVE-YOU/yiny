@@ -13,6 +13,14 @@ export const registry: DigestMeta[] = [
   {
     roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-07-29",
+    title: { zh: "扩散模型蒸馏加速与视觉条件表示优化", en: "Diffusion Distillation Acceleration & Visual Conditioning Optimization" },
+    mustReadCount: 5,
+    worthReadingCount: 8,
+  },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2026-07-28",
     title: { zh: "音频-视频联合表征与扩散模型优化", en: "Audio-Video Joint Representation & Diffusion Model Optimization" },
     mustReadCount: 4,
@@ -251,7 +259,7 @@ export const registry: DigestMeta[] = [
     worthReadingCount: 8,
   },
   {
-    roleId: "music_to_dance",
+    roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2025-06-17",
     title: { zh: "世界模型与扩散生成：从交互式视频到频谱优化", en: "World Models & Diffusion Generation: From Interactive Video to Spectral Optimization" },
@@ -259,7 +267,7 @@ export const registry: DigestMeta[] = [
     worthReadingCount: 6,
   },
   {
-    roleId: "music_to_dance",
+    roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 研究", en: "Music-to-Dance Research" },
     date: "2026-06-16",
     title: { zh: "3D 重建与世界模型前沿", en: "3D Reconstruction & World Model Frontiers" },

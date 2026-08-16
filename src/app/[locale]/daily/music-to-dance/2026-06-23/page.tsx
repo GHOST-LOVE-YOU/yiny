@@ -2,7 +2,7 @@ import {
   DigestLayout, MustRead, Paper, KeyPoints, PaperLink,
   WorthReading, NotableItem, Observation
 } from '@/components/digest'
-import { getUI, type Locale, locales } from '@/lib/i18n'
+import { type Locale, locales } from '@/lib/i18n'
 import type { Metadata } from 'next'
 
 const content = {
@@ -265,8 +265,8 @@ export async function generateMetadata({
     title: c.title,
     alternates: {
       languages: {
-        'zh-CN': `/zh/daily/music_to_dance/2026-06-23`,
-        'en': `/en/daily/music_to_dance/2026-06-23`,
+        'zh-CN': `/zh/daily/music-to-dance/2026-06-23`,
+        'en': `/en/daily/music-to-dance/2026-06-23`,
       },
     },
   }
@@ -284,7 +284,7 @@ export default async function Page({
     <DigestLayout
       locale={locale}
       date="2026-06-23"
-      roleId="music_to_dance"
+      roleId="music-to-dance"
       roleName={c.roleName}
       title={c.title}
       overview={c.overview}

@@ -2,7 +2,7 @@ import {
   DigestLayout, MustRead, Paper, KeyPoints, PaperLink,
   WorthReading, NotableItem, Observation
 } from '@/components/digest'
-import { getUI, type Locale, locales } from '@/lib/i18n'
+import { type Locale, locales } from '@/lib/i18n'
 import type { Metadata } from 'next'
 
 const content = {
