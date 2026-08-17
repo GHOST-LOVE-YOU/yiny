@@ -13,6 +13,14 @@ export const registry: DigestMeta[] = [
   {
     roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-08-17",
+    title: { zh: "显式关节世界状态驱动的长时程角色生成", en: "Long-Horizon Character Generation with Explicit Articulated World States" },
+    mustReadCount: 1,
+    worthReadingCount: 0,
+  },
+  {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2026-07-29",
     title: { zh: "扩散模型蒸馏加速与视觉条件表示优化", en: "Diffusion Distillation Acceleration & Visual Conditioning Optimization" },
     mustReadCount: 5,
