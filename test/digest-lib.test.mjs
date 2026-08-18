@@ -2,7 +2,10 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 
 import {
+  buildArxivUrl,
+  buildArxivUrls,
   buildMarkdownDraft,
+  fetchText,
   isValidDigestDate,
   normalizeArxivFeed,
   normalizeHuggingFacePapers,
@@ -27,6 +30,30 @@ test('accepts only real ISO calendar dates for output names', () => {
   assert.equal(isValidDigestDate('2026-08-16'), true)
   assert.equal(isValidDigestDate('2026-02-30'), false)
   assert.equal(isValidDigestDate('../../../tmp/owned'), false)
+})
+
+test('builds small requests across the relevant cs categories', () => {
+  const urls = buildArxivUrls(25)
+  assert.equal(urls.length, 4)
+  assert.match(buildArxivUrl(25, ['cs.AI', 'cs.CV']), /max_results=25/)
+  assert.match(urls[0], /cat%3Acs\.AI\+OR\+cat%3Acs\.CV/)
+  assert.match(urls[2], /cat%3Acs\.CL\+OR\+cat%3Acs\.RO/)
+})
+
+test('retries transient arXiv responses with bounded backoff', async () => {
+  let calls = 0
+  const text = await fetchText('https://example.test', {
+    retries: 2,
+    retryDelayMs: 0,
+    sleep: async () => {},
+    fetchImpl: async () => {
+      calls += 1
+      if (calls < 3) return { ok: false, status: 503, statusText: 'Unavailable' }
+      return { ok: true, text: async () => 'ok' }
+    },
+  })
+  assert.equal(text, 'ok')
+  assert.equal(calls, 3)
 })
 
 test('normalizes arXiv Atom entries into stable candidates', () => {

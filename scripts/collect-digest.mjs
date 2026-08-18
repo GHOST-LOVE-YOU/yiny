@@ -5,7 +5,7 @@ import { resolve } from 'node:path'
 
 import {
   HUGGING_FACE_DAILY_PAPERS_URL,
-  buildArxivUrl,
+  buildArxivUrls,
   buildMarkdownDraft,
   fetchText,
   isValidDigestDate,
@@ -37,11 +37,13 @@ if (!isValidDigestDate(date)) {
   const sourceErrors = []
   const candidates = []
 
-  try {
-    const feed = await fetchText(buildArxivUrl(limit))
-    candidates.push(...normalizeArxivFeed(feed))
-  } catch (error) {
-    sourceErrors.push(`arXiv: ${error.message}`)
+  for (const [index, url] of buildArxivUrls(Math.min(limit, 25)).entries()) {
+    try {
+      const feed = await fetchText(url)
+      candidates.push(...normalizeArxivFeed(feed))
+    } catch (error) {
+      sourceErrors.push(`arXiv group ${index + 1}: ${error.message}`)
+    }
   }
 
   try {

@@ -22,8 +22,8 @@ export const registry: DigestMeta[] = [
     roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2026-08-18",
-    title: { zh: "高效视频生成与人物跨镜头连续性评估", en: "Efficient Video Generation and Cross-Shot Character Continuity" },
-    mustReadCount: 2,
+    title: { zh: "音乐驱动舞蹈生成的组合控制、节奏保持与长视频评测", en: "Compositional Control, Rhythm Preservation, and Long-Video Evaluation for Music-Driven Dance" },
+    mustReadCount: 3,
     worthReadingCount: 2,
   },
   {

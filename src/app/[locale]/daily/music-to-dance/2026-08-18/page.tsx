@@ -8,89 +8,109 @@ import type { Metadata } from 'next'
 const content = {
   zh: {
     roleName: 'Music-to-Dance 视频生成研究者',
-    title: '高效视频生成与人物跨镜头连续性评估',
-    description: 'Music-to-Dance 视频生成相关论文速递',
+    title: '音乐驱动舞蹈生成的组合控制、节奏保持与长视频评测',
+    description: '2026 年 8 月 18 日 Music-to-Dance 论文速递',
     overview: [
-      'SQuad 将视频 DiT 注意力复杂度降至次二次，并把 Wan 2.2 5B 的采样从 100 NFE 压缩到 6 NFE',
-      'PersonaShot 用约 1,000 个多镜头片段和 16 项指标评估人物物理、情感与电影语法连续性',
-      '生成中语义纠错与视觉上下文编辑为动作语义控制和舞蹈视频后期提供新工具',
+      'SingDance 将歌曲演唱、角色语义与音乐驱动舞蹈组合到统一视频扩散框架中，并报告强运动-节拍对齐',
+      'FlowDance 使用姿态与 RGB 并行流，把音乐-动作对应、身份保持和真实视频生成拆成可控模块',
+      'CIME、SQuad 与 PersonaShot 分别补足编辑节奏、长视频效率和跨镜头连续性三个质量维度',
     ],
     papers: [
       {
         num: 1,
-        tag: '注意力蒸馏 · 高效视频生成 · 8月17日',
-        title: 'SQuad: Sub-Quadratic Attention Distillation for Efficient Video Generation',
+        tag: '歌唱-舞蹈组合生成 · 8月17日 · cs.CV/cs.SD',
+        title: 'SingDance: Compositional Zero-Shot Singing-and-Dancing Video Generation with Role-Aware Audio Conditioning',
         keyPoints: [
-          '提出 SQuad-Attention，将蒸馏后注意力复杂度控制在 O(n sqrt(n))，在视频长序列中平衡线性近似的效率与完整 softmax 注意力的表达能力',
-          '采用两阶段蒸馏：先进行 Flow-Matching 监督微调，再使用改进的 DMD2 同时压缩注意力与采样步数，无需从头训练视频 DiT',
-          '在 Wan 2.2 5B 文生视频模型上达到 83.20 VBench，略高于二次复杂度教师的 83.08',
-          '单步单块注意力 FLOPs 约降低 67 倍、注意力延迟约降低 11 倍、端到端 DiT 延迟降低 2 倍，并将采样从默认 100 NFE 降到 6 NFE',
+          '提出统一视频扩散框架，把角色语义分为演唱者 source 和听众 listener，并通过硬路由选择语音、音乐和角色条件',
+          '用说话视频学习口型路径，用器乐和歌曲舞蹈视频学习音乐条件身体运动，训练阶段不直接观察目标 Song/Source 组合',
+          '推理时组合已学习的口型与音乐舞蹈能力，实现零样本演唱-舞蹈生成，并报告强运动-节拍对齐和可切换角色控制',
         ],
-        description: 'SQuad 对 Music-to-Dance 的价值在于同时处理长视频的 token 成本和扩散采样延迟。舞蹈视频需要高帧率来保留快速肢体变化，音乐条件、参考人物与姿态控制又会进一步扩大序列和条件计算；次二次注意力让更长或更高分辨率的生成更可行，6 NFE 则接近交互式预览所需的延迟区间。论文只在通用文生视频上报告结果，尚未验证快速动作、足部接触或节拍对齐是否会在注意力蒸馏后退化，因此迁移时应补充音乐-动作同步与细粒度运动指标。',
-        href: 'https://arxiv.org/abs/2608.16585v1',
+        description: '这是本期最直接的 Music-to-Dance 工作。它把“跟着音乐跳舞”和“对歌曲做演唱口型”视为可组合能力，而不是为每一种角色关系重新训练模型。对 yiny 而言，关键启发是将音频条件拆成可路由的音乐、语音和角色语义，并单独评估节拍相位保持、口型同步和身体运动质量。',
+        href: 'https://arxiv.org/abs/2608.16220',
       },
       {
         num: 2,
-        tag: '人物连续性 · 多镜头视频评测 · 8月17日',
-        title: 'PersonaShot: Benchmarking Person-Centric Narrative Continuity in Multi-Shot Video Generation',
+        tag: '音乐驱动舞蹈生成 · 8月16日 · cs.CV',
+        title: 'FlowDance: Music-Driven Dance Video Generation with Parallel Pose and RGB Streams',
         keyPoints: [
-          '提出首个人物中心的多镜头叙事连续性基准，包含约 1,000 个多镜头片段和 16 项指标',
-          '从镜头内状态、跨镜头转场和序列级轨迹三个时间层次评估人物一致性',
-          '覆盖物理连续性、情感动态和电影语法，并为不同准则训练与专家判断对齐的轻量专用评估器',
-          '系统评测发现感知质量与跨镜头连续性存在明显鸿沟：高观感视频仍常出现物理状态重置、情感突变和镜头关系断裂',
+          '用姿态流和 RGB 流并行建模显式动作结构与参考人物视觉合成，直接面向音乐驱动舞蹈视频',
+          '提出 timestep-aware pose injection，适配不同去噪阶段的结构引导，并用 persistent identity injection 保持长视频身份',
+          '构建带同步音乐、RGB、3D 身体运动、相机参数和 2D 姿态标注的高分辨率真实舞蹈视频数据集',
         ],
-        description: 'PersonaShot 为长篇舞蹈与多机位编舞补上了单镜头指标缺失的一层。Music-to-Dance 系统不能只检查人物外观是否一致，还应验证动作相位在剪辑点是否延续、身体朝向和支撑状态是否合理、情绪强度是否随音乐段落平滑演化。其分层评测框架可扩展为舞蹈专用指标，把节拍相位、动作短语和队形关系加入跨镜头连续性检查。需要注意的是，该基准面向通用人物叙事，并未包含音乐条件或舞蹈动作的专项标注。',
-        href: 'https://arxiv.org/abs/2608.16717v1',
+        description: 'FlowDance 与 yiny 的目标最接近：它把 music-to-motion correspondence、身份保持、时间一致性和视频真实感放在同一个系统里处理。并行姿态/RGB 设计适合作为工程基线，数据集中的 3D 动作、相机和投影姿态标注也为节拍对齐、足部接触和镜头运动评测提供了参照。',
+        href: 'https://arxiv.org/abs/2608.15818',
+      },
+      {
+        num: 3,
+        tag: '动作编辑与节奏保持 · 8月17日 · cs.CV',
+        title: 'Spatial Temporal Synergy: Balancing Change and Invariance in Text Driven 3D Human Motion Editing',
+        keyPoints: [
+          '提出 CIME，将动作编辑中的变化与不变性分解到空间姿态和时间节奏两个维度',
+          '用正负监督、层级回溯特征和细微运动保持约束姿态语义变化，同时保护原始运动结构',
+          'RNIMM 使用运动学感知的非均匀时间戳复现物理节拍，避免可变长度编辑破坏内在节奏',
+        ],
+        description: '虽然它不是音乐条件生成器，但对舞蹈编辑的节奏保持非常直接：文本修改不应抹掉原有动作的物理节拍。yiny 可以借鉴其空间-时间解耦，把音乐节拍、动作短语边界和接触事件作为编辑时必须保持的时间结构。',
+        href: 'https://arxiv.org/abs/2608.16008',
       },
     ],
     worthReading: [
-      { num: 1, title: 'MLLM-Guided Semantic Correction for Text-to-Video Generation', tag: '生成中语义纠错 · 8月17日', href: 'https://arxiv.org/abs/2608.16513v1', description: '把多模态大模型反馈直接注入扩散采样循环，通过中间预览诊断偏差并干预潜变量轨迹；可借鉴为舞蹈生成增加动作、服装和场景语义的在线检查，但论文尚未评估音乐同步。' },
-      { num: 2, title: 'VicEdit: Learning to Edit Videos from Visual In-Context Examples', tag: '视觉上下文视频编辑 · 8月17日', href: 'https://arxiv.org/abs/2608.16745v1', description: '以单图、图像对和视频对作为视觉示例，结合模态自适应语义蒸馏与双上下文注入完成可控编辑；适合探索用动作示例修正舞蹈视频的局部动态与风格。' },
+      { num: 1, title: 'SQuad: Sub-Quadratic Attention Distillation for Efficient Video Generation', tag: '高效长视频生成 · 8月17日', href: 'https://arxiv.org/abs/2608.16585', description: '将视频注意力降为 O(n sqrt(n))，在 Wan 2.2 5B 上报告约 67 倍单块注意力 FLOPs 降低、约 11 倍注意力延迟降低，并把采样从 100 NFE 降到 6；迁移到舞蹈前仍需验证快速动作和节拍对齐是否退化。' },
+      { num: 2, title: 'PersonaShot: Benchmarking Person-Centric Narrative Continuity in Multi-Shot Video Generation', tag: '跨镜头人物连续性评测 · 8月17日', href: 'https://arxiv.org/abs/2608.16717', description: '以约 1,000 个多镜头片段和 16 项指标评估物理连续性、情感动态与电影语法；其跨镜头状态评测可扩展为舞蹈相位、身体朝向、支撑状态和队形连续性指标。' },
     ],
-    observation: '本期真实采集覆盖 arXiv 与 Hugging Face Daily Papers。首次代理采集时 arXiv 超时，代理重试返回 503；随后无代理重试成功取得最新 100 篇分类候选，因此 arXiv 覆盖恢复。Hugging Face 接口两次请求均成功，但其 100 篇列表的最新条目停留在 8 月 14 日，没有提供本期 8 月 17 日新论文，也没有与入选论文形成重复来源。人工筛选排除了仅因 dance、motion、diffusion 等字符串片段或宽泛词命中的无关工作。今天最明确的组合方向是“先降低长视频生成成本，再把人物连续性纳入评测”：SQuad 解决生成侧的注意力与采样瓶颈，PersonaShot 则揭示高视觉质量不等于跨镜头动作和状态连续。对 Music-to-Dance 而言，下一步应在高效生成模型上联合检查节拍同步、足部接触、动作短语连续性与跨镜头相位保持。',
+    observation: '本次重新采集使用四组独立的 cs.* arXiv 小请求：cs.AI/cs.CV、cs.LG/cs.SD、cs.CL/cs.RO、cs.HC/cs.MM/cs.GR；每组最多 25 条，并对 429、5xx 和超时进行有界重试。代理采集全部成功，无来源告警。Hugging Face Daily Papers 也成功返回。筛选以 2026-08-17 为主，并保留 2026-08-16 的 FlowDance 作为周一窗口内的直接相关论文；排除了仅命中 audio、dance、motion 或 diffusion 字符串的无关论文。本期最清晰的技术路线是：用组合式音频条件控制歌唱与舞蹈，用并行姿态/RGB 流保持动作和身份，再用节奏保持、效率和跨镜头连续性补齐质量门禁。',
   },
   en: {
     roleName: 'Music-to-Dance Video Generation Researcher',
-    title: 'Efficient Video Generation and Cross-Shot Character Continuity',
-    description: 'Daily research digest for Music-to-Dance video generation',
+    title: 'Compositional Control, Rhythm Preservation, and Long-Video Evaluation for Music-Driven Dance',
+    description: 'Music-to-Dance research digest for August 18, 2026',
     overview: [
-      'SQuad brings Video DiT attention below quadratic complexity and distills Wan 2.2 5B sampling from 100 to 6 NFEs',
-      'PersonaShot evaluates physical, affective, and cinematic character continuity with about 1,000 multi-shot segments and 16 metrics',
-      'Mid-generation semantic correction and visual in-context editing add new tools for motion control and dance-video post-production',
+      'SingDance composes singing, role semantics, and music-driven dance in one video diffusion framework with strong motion-beat alignment',
+      'FlowDance uses parallel pose and RGB streams to separate music-motion correspondence, identity preservation, and realistic synthesis',
+      'CIME, SQuad, and PersonaShot add complementary coverage for rhythm-preserving editing, long-video efficiency, and cross-shot continuity',
     ],
     papers: [
       {
         num: 1,
-        tag: 'Attention Distillation · Efficient Video Generation · Aug 17',
-        title: 'SQuad: Sub-Quadratic Attention Distillation for Efficient Video Generation',
+        tag: 'Compositional Singing and Dance · Aug 17 · cs.CV/cs.SD',
+        title: 'SingDance: Compositional Zero-Shot Singing-and-Dancing Video Generation with Role-Aware Audio Conditioning',
         keyPoints: [
-          'Introduces SQuad-Attention with O(n sqrt(n)) complexity, balancing the efficiency of linear approximations with the expressivity of full softmax attention on long video sequences',
-          'Uses two-stage distillation: Flow-Matching supervised fine-tuning followed by improved DMD2 to compress both attention and sampling without training a Video DiT from scratch',
-          'Scores 83.20 on VBench with Wan 2.2 5B text-to-video, slightly above the quadratic teacher at 83.08',
-          'Cuts per-step per-block attention FLOPs by about 67x, attention latency by about 11x, end-to-end DiT latency by 2x, and sampling from the default 100 NFEs to 6',
+          'Introduces a unified video diffusion framework with source and listener role semantics and hard routing for speech, music, and role conditions',
+          'Learns articulation from speaking videos and music-conditioned body motion from instrumental and song-dance videos without observing the target Song/Source combination during training',
+          'Composes the learned capabilities at inference for zero-shot singing-and-dancing, reporting strong motion-beat alignment and controllable role switching',
         ],
-        description: 'SQuad addresses both token cost and diffusion latency for longer video generation. Dance video needs sufficient frame rate to preserve fast body movement, while music, identity references, and pose controls further enlarge the sequence and conditioning workload. Sub-quadratic attention makes longer or higher-resolution generation more practical, and six-step sampling approaches the latency needed for interactive previews. The paper reports only general text-to-video results; transfer should therefore test whether rapid motion, foot contact, or beat alignment degrades after attention distillation.',
-        href: 'https://arxiv.org/abs/2608.16585v1',
+        description: 'This is the most directly relevant Music-to-Dance paper in the issue. It treats music-driven dance and singing articulation as composable capabilities rather than retraining for every role relationship. For yiny, the key idea is to route music, speech, and role semantics separately and evaluate beat phase, lip synchronization, and body motion quality as distinct signals.',
+        href: 'https://arxiv.org/abs/2608.16220',
       },
       {
         num: 2,
-        tag: 'Character Continuity · Multi-Shot Video Evaluation · Aug 17',
-        title: 'PersonaShot: Benchmarking Person-Centric Narrative Continuity in Multi-Shot Video Generation',
+        tag: 'Music-Driven Dance Generation · Aug 16 · cs.CV',
+        title: 'FlowDance: Music-Driven Dance Video Generation with Parallel Pose and RGB Streams',
         keyPoints: [
-          'Introduces the first person-centric multi-shot narrative-continuity benchmark, with about 1,000 multi-shot segments and 16 metrics',
-          'Evaluates character coherence at three temporal levels: within-shot states, cross-shot transitions, and sequence-level trajectories',
-          'Covers physical continuity, affective dynamics, and cinematic grammar with lightweight criterion-specific evaluators aligned to expert judgments',
-          'Finds a clear gap between perceptual quality and cross-shot continuity: visually strong videos still reset physical states, shift affect abruptly, and break cinematic relations',
+          'Uses parallel pose and RGB streams to model explicit motion structure and reference-preserving visual synthesis for music-driven dance video',
+          'Introduces timestep-aware pose injection for denoising-stage structural guidance and persistent identity injection for long-video identity preservation',
+          'Builds a high-resolution in-the-wild dance dataset with synchronized music, RGB video, 3D body motion, camera parameters, and projected 2D poses',
         ],
-        description: 'PersonaShot adds an evaluation layer missing from long-form and multi-camera dance generation. A music-to-dance system should check more than appearance identity: motion phase should survive cuts, body orientation and support states should remain plausible, and emotional intensity should evolve with musical sections. Its hierarchical framework could be extended with dance-specific beat phase, motion phrase, and formation metrics. The current benchmark targets general person-centric narratives and does not include music conditioning or dedicated dance annotations.',
-        href: 'https://arxiv.org/abs/2608.16717v1',
+        description: 'FlowDance is closely aligned with yiny\'s target: it addresses music-motion correspondence, identity preservation, temporal coherence, and visual realism together. Its parallel pose/RGB design is a useful engineering baseline, while its annotations support beat alignment, foot-contact, and camera-motion evaluation.',
+        href: 'https://arxiv.org/abs/2608.15818',
+      },
+      {
+        num: 3,
+        tag: 'Motion Editing and Rhythm Preservation · Aug 17 · cs.CV',
+        title: 'Spatial Temporal Synergy: Balancing Change and Invariance in Text Driven 3D Human Motion Editing',
+        keyPoints: [
+          'Introduces CIME, separating change and invariance in motion editing across spatial pose and temporal rhythm',
+          'Uses positive-negative supervision, hierarchical feature supervision, and subtle-motion preservation to constrain semantic pose changes',
+          'Uses kinematics-aware non-uniform timestamps in RNIMM to reproduce physical beats during variable-length editing',
+        ],
+        description: 'Although it is not a music-conditioned generator, its rhythm-preservation objective is directly useful for dance editing: text changes should not erase the physical beat of the original motion. A yiny adaptation could preserve musical beats, motion-phrase boundaries, and contact events as explicit temporal constraints.',
+        href: 'https://arxiv.org/abs/2608.16008',
       },
     ],
     worthReading: [
-      { num: 1, title: 'MLLM-Guided Semantic Correction for Text-to-Video Generation', tag: 'Mid-Generation Semantic Correction · Aug 17', href: 'https://arxiv.org/abs/2608.16513v1', description: 'Injects MLLM feedback into the diffusion loop, using intermediate previews to diagnose deviations and intervene in latent trajectories. It could support online checks for action, costume, and scene semantics in dance generation, although music synchronization is not evaluated.' },
-      { num: 2, title: 'VicEdit: Learning to Edit Videos from Visual In-Context Examples', tag: 'Visual In-Context Video Editing · Aug 17', href: 'https://arxiv.org/abs/2608.16745v1', description: 'Uses single images, image pairs, and video pairs as visual examples, combining modality-adaptive semantic distillation with dual-context injection. The approach may support local correction of dance dynamics and style from motion examples.' },
+      { num: 1, title: 'SQuad: Sub-Quadratic Attention Distillation for Efficient Video Generation', tag: 'Efficient Long-Video Generation · Aug 17', href: 'https://arxiv.org/abs/2608.16585', description: 'Reduces video attention to O(n sqrt(n)); on Wan 2.2 5B it reports about 67x lower per-block attention FLOPs, about 11x lower attention latency, and sampling reduced from 100 to 6 NFEs. Dance transfer still needs tests for fast motion and beat alignment degradation.' },
+      { num: 2, title: 'PersonaShot: Benchmarking Person-Centric Narrative Continuity in Multi-Shot Video Generation', tag: 'Cross-Shot Character Continuity · Aug 17', href: 'https://arxiv.org/abs/2608.16717', description: 'Evaluates physical continuity, affective dynamics, and cinematic grammar on about 1,000 multi-shot segments with 16 metrics. Its cross-shot state evaluation can be extended to dance phase, body orientation, support state, and formation continuity.' },
     ],
-    observation: 'This issue used live collection from both arXiv and Hugging Face Daily Papers. The first proxied arXiv request timed out and a proxied retry returned HTTP 503; a subsequent direct retry succeeded and supplied the latest 100 category-bounded candidates, restoring arXiv coverage. Both Hugging Face requests succeeded, but its 100-paper response ended with Aug 14 entries and supplied no new Aug 17 papers or duplicate provenance for the selected work. Manual review removed papers matched only by substring artifacts or broad terms such as dance, motion, and diffusion. The clearest combined direction is to reduce long-video generation cost while evaluating character continuity explicitly: SQuad tackles attention and sampling bottlenecks, while PersonaShot shows that visual quality does not guarantee coherent motion and state across cuts. Music-to-dance evaluation should now combine efficient generation with beat synchronization, foot contact, motion-phrase continuity, and cross-shot phase preservation.',
+    observation: 'This rerun used four independent small arXiv requests over cs.* categories: cs.AI/cs.CV, cs.LG/cs.SD, cs.CL/cs.RO, and cs.HC/cs.MM/cs.GR. Each group requested at most 25 entries and used bounded retries for 429, 5xx, and timeouts. All proxied requests succeeded without source warnings, and Hugging Face Daily Papers also returned successfully. The selection prioritizes Aug 17 and retains FlowDance from Aug 16 as a directly relevant paper within the Monday coverage window. Papers matched only by broad audio, dance, motion, or diffusion strings were removed. The clearest direction is compositional audio control for singing and dance, parallel pose/RGB synthesis for motion and identity, and explicit quality gates for rhythm, efficiency, and cross-shot continuity.',
   },
 }
 
@@ -98,69 +118,24 @@ export function generateStaticParams() {
   return locales.map(locale => ({ locale }))
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
   const { locale } = await params
   const c = content[locale]
-  return {
-    title: c.title,
-    description: c.description,
-    alternates: {
-      languages: {
-        'zh-CN': '/zh/daily/music-to-dance/2026-08-18',
-        en: '/en/daily/music-to-dance/2026-08-18',
-      },
-    },
-  }
+  return { title: c.title, description: c.description, alternates: { languages: { 'zh-CN': '/zh/daily/music-to-dance/2026-08-18', en: '/en/daily/music-to-dance/2026-08-18' } } }
 }
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>
-}) {
+export default async function Page({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params
   const c = content[locale]
-
   return (
-    <DigestLayout
-      locale={locale}
-      date="2026-08-18"
-      roleId="music-to-dance"
-      roleName={c.roleName}
-      title={c.title}
-      overview={c.overview}
-    >
+    <DigestLayout locale={locale} date="2026-08-18" roleId="music-to-dance" roleName={c.roleName} title={c.title} overview={c.overview}>
       <MustRead>
-        {c.papers.map(paper => (
-          <Paper key={paper.num} num={paper.num} tag={paper.tag} title={paper.title}>
-            <KeyPoints points={paper.keyPoints} />
-            <p className="text-[#2C2C24] leading-relaxed">{paper.description}</p>
-            <PaperLink href={paper.href} title={paper.title} />
-          </Paper>
-        ))}
+        {c.papers.map(paper => <Paper key={paper.num} num={paper.num} tag={paper.tag} title={paper.title}><KeyPoints points={paper.keyPoints} /><p className="text-[#2C2C24] leading-relaxed">{paper.description}</p><PaperLink href={paper.href} title={paper.title} /></Paper>)}
       </MustRead>
-
       <WorthReading>
-        {c.worthReading.map(item => (
-          <NotableItem
-            key={item.num}
-            num={item.num}
-            title={item.title}
-            tag={item.tag}
-            href={item.href}
-          >
-            {item.description}
-          </NotableItem>
-        ))}
+        {c.worthReading.map(item => <NotableItem key={item.num} num={item.num} title={item.title} tag={item.tag} href={item.href}>{item.description}</NotableItem>)}
       </WorthReading>
-
-      <Observation>
-        <p>{c.observation}</p>
-      </Observation>
+      <Observation><p>{c.observation}</p></Observation>
     </DigestLayout>
   )
 }

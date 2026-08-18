@@ -188,17 +188,47 @@ export function buildMarkdownDraft(date, candidates, sourceErrors) {
   return lines.join('\n')
 }
 
-export async function fetchText(url, { timeoutMs = 15_000, fetchImpl = fetch } = {}) {
-  const response = await fetchImpl(url, {
-    headers: { 'user-agent': 'yiny-digest-collector/1.0 (local review tool)' },
-    signal: AbortSignal.timeout(timeoutMs),
-  })
-  if (!response.ok) throw new Error(`${response.status} ${response.statusText}`)
-  return response.text()
+export async function fetchText(url, {
+  timeoutMs = 20_000,
+  retries = 2,
+  retryDelayMs = 3_500,
+  fetchImpl = fetch,
+  sleep = (delay) => new Promise(resolve => setTimeout(resolve, delay)),
+} = {}) {
+  let lastError
+
+  for (let attempt = 0; attempt <= retries; attempt += 1) {
+    try {
+      const response = await fetchImpl(url, {
+        headers: { 'user-agent': 'yiny-digest-collector/1.1 (local review tool)' },
+        signal: AbortSignal.timeout(timeoutMs),
+      })
+      if (response.ok) return response.text()
+
+      lastError = new Error(`${response.status} ${response.statusText}`)
+      if (![429, 500, 502, 503, 504].includes(response.status)) throw lastError
+    } catch (error) {
+      lastError = error
+      if (attempt === retries) throw error
+    }
+
+    await sleep(retryDelayMs * (attempt + 1))
+  }
+
+  throw lastError
 }
 
-export function buildArxivUrl(limit) {
-  const query = '(cat:cs.CV OR cat:cs.LG OR cat:cs.SD OR cat:eess.AS)'
+export const ARXIV_CS_CATEGORY_GROUPS = [
+  ['cs.AI', 'cs.CV'],
+  ['cs.LG', 'cs.SD'],
+  ['cs.CL', 'cs.RO'],
+  ['cs.HC', 'cs.MM', 'cs.GR'],
+]
+
+export function buildArxivUrl(limit, categories = ARXIV_CS_CATEGORY_GROUPS) {
+  const categoryQuery = `(${categories.map(category => `cat:${category}`).join(' OR ')})`
+  const topicQuery = '(all:music OR all:dance OR all:audio OR all:pose OR all:"human motion" OR all:"motion generation" OR all:"video generation" OR all:rhythm)'
+  const query = `${categoryQuery} AND ${topicQuery}`
   const params = new URLSearchParams({
     search_query: query,
     start: '0',
@@ -207,6 +237,10 @@ export function buildArxivUrl(limit) {
     sortOrder: 'descending',
   })
   return `https://export.arxiv.org/api/query?${params}`
+}
+
+export function buildArxivUrls(limit, groups = ARXIV_CS_CATEGORY_GROUPS) {
+  return groups.map(categories => buildArxivUrl(limit, categories))
 }
 
 export const HUGGING_FACE_DAILY_PAPERS_URL = 'https://huggingface.co/api/daily_papers'
