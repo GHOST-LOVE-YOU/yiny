@@ -13,6 +13,14 @@ export const registry: DigestMeta[] = [
   {
     roleId: "world-action-model",
     roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
+    date: "2026-08-21",
+    title: { zh: "分层触觉预测、全身解耦与外科联合预报：WAM 当日三篇强相关新作", en: "Hierarchical Tactile Forecasting, Whole-Body Decoupling, and Surgical Joint Prediction" },
+    mustReadCount: 3,
+    worthReadingCount: 1,
+  },
+  {
+    roleId: "world-action-model",
+    roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
     date: "2026-08-20",
     title: { zh: "面向决策的未来潜变量与可学习世界模型规划", en: "Decision-Aligned Future Latents and Learned World-Model Planning" },
     mustReadCount: 3,
