@@ -13,6 +13,14 @@ export const registry: DigestMeta[] = [
   {
     roleId: "world-action-model",
     roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
+    date: "2026-08-26",
+    title: { zh: "动作跟随、潜在意图与实时闭环：WAM 的可执行未来预测", en: "Action Following, Latent Intentions, and Real-Time Closed Loops for Executable WAM Futures" },
+    mustReadCount: 5,
+    worthReadingCount: 2,
+  },
+  {
+    roleId: "world-action-model",
+    roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
     date: "2026-08-25",
     title: { zh: "几何未来预测与可交互世界模型的动作耦合边界", en: "Geometric Future Prediction and the Boundary of Action-Coupled World Models" },
     mustReadCount: 1,
