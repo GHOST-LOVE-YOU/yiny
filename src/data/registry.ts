@@ -13,6 +13,14 @@ export const registry: DigestMeta[] = [
   {
     roleId: "world-action-model",
     roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
+    date: "2026-08-28",
+    title: { zh: "统一世界-动作建模、跨 embodiment 物理预测与预测编码控制", en: "Unified World-Action Modeling, Cross-Embodiment Physics, and Predictive-Coding Control" },
+    mustReadCount: 4,
+    worthReadingCount: 2,
+  },
+  {
+    roleId: "world-action-model",
+    roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
     date: "2026-08-27",
     title: { zh: "视频示范驱动的任务泛化与对象中心 4D 世界动作建模", en: "Video-Demonstrated Task Generalization and Object-Centric 4D World-Action Modeling" },
     mustReadCount: 2,
