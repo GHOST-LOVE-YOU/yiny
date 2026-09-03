@@ -13,6 +13,14 @@ export const registry: DigestMeta[] = [
   {
     roleId: "world-action-model",
     roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
+    date: "2026-09-03",
+    title: { zh: "几何潜变量扩散与世界一致性解码：WAM 的空间推理与测试时规划", en: "Geometric Latent Diffusion and World-Coherent Decoding for Spatial Reasoning and Test-Time Planning" },
+    mustReadCount: 2,
+    worthReadingCount: 0,
+  },
+  {
+    roleId: "world-action-model",
+    roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
     date: "2026-09-02",
     title: { zh: "可扩展视频预训练、闭环决策与潜在世界-动作部署", en: "Scalable Video Pre-training, Closed-Loop Decisions, and Latent World-Action Deployment" },
     mustReadCount: 3,
