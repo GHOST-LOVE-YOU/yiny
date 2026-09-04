@@ -13,6 +13,14 @@ export const registry: DigestMeta[] = [
   {
     roleId: "world-action-model",
     roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
+    date: "2026-09-04",
+    title: { zh: "动作一致性奖励与世界模型后训练：从未来评估到闭环优化", en: "Action-Consistent Rewards and World-Model Post-Training from Future Evaluation to Closed-Loop Optimization" },
+    mustReadCount: 1,
+    worthReadingCount: 0,
+  },
+  {
+    roleId: "world-action-model",
+    roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
     date: "2026-09-03",
     title: { zh: "几何潜变量扩散与世界一致性解码：WAM 的空间推理与测试时规划", en: "Geometric Latent Diffusion and World-Coherent Decoding for Spatial Reasoning and Test-Time Planning" },
     mustReadCount: 2,
