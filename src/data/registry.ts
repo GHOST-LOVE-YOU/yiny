@@ -13,6 +13,14 @@ export const registry: DigestMeta[] = [
   {
     roleId: "world-action-model",
     roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
+    date: "2026-09-11",
+    title: { zh: "动作落地的未来预测与记忆规划：从可执行转移到长时程闭环", en: "Executable Future Prediction and Memory-Grounded Planning for Long-Horizon Closed Loops" },
+    mustReadCount: 2,
+    worthReadingCount: 2,
+  },
+  {
+    roleId: "world-action-model",
+    roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
     date: "2026-09-04",
     title: { zh: "动作一致性奖励与世界模型后训练：从未来评估到闭环优化", en: "Action-Consistent Rewards and World-Model Post-Training from Future Evaluation to Closed-Loop Optimization" },
     mustReadCount: 1,
