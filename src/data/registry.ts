@@ -13,6 +13,14 @@ export const registry: DigestMeta[] = [
   {
     roleId: "world-action-model",
     roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
+    date: "2026-09-15",
+    title: { zh: "统一离散世界—动作词表：从人类交互视频学习物理闭环", en: "A Unified Discrete World–Action Vocabulary Learned from Human Interaction" },
+    mustReadCount: 1,
+    worthReadingCount: 0,
+  },
+  {
+    roleId: "world-action-model",
+    roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
     date: "2026-09-14",
     title: { zh: "空间目标潜接口：抑制视觉—动作捷径的 WAM 泛化训练", en: "Spatial-Goal Latent Interfaces for Shortcut-Resistant WAM Generalization" },
     mustReadCount: 1,
