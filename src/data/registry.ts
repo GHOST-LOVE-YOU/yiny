@@ -11,6 +11,14 @@ export interface DigestMeta {
 
 export const registry: DigestMeta[] = [
   {
+    roleId: "world-action-model",
+    roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
+    date: "2026-09-18",
+    title: { zh: "触觉联合扩散、显式运动未来与跨具身接触动力学", en: "Joint Tactile Diffusion, Explicit Motion Futures, and Cross-Embodiment Contact Dynamics" },
+    mustReadCount: 3,
+    worthReadingCount: 3,
+  },
+  {
     roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2026-09-18",
