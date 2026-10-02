@@ -11,6 +11,14 @@ export interface DigestMeta {
 
 export const registry: DigestMeta[] = [
   {
+    roleId: "world-action-model",
+    roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
+    date: "2026-10-02",
+    title: { zh: "统一语义、视觉未来与动作：可控扩散 WAM 的闭环进展", en: "Unifying Semantics, Visual Futures, and Actions in Controllable Diffusion WAMs" },
+    mustReadCount: 4,
+    worthReadingCount: 1,
+  },
+  {
     roleId: "music-to-dance",
     roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
     date: "2026-10-02",
