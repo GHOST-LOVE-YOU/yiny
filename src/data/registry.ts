@@ -13,6 +13,14 @@ export const registry: DigestMeta[] = [
   {
     roleId: "world-action-model",
     roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
+    date: "2026-10-06",
+    title: { zh: "单步异步 WAM、分层潜空间规划与未来锚点恢复", en: "One-Step Asynchronous WAMs, Hierarchical Latent Planning, and Future-Anchored Recovery" },
+    mustReadCount: 3,
+    worthReadingCount: 4,
+  },
+  {
+    roleId: "world-action-model",
+    roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
     date: "2026-10-05",
     title: { zh: "从三维预演到渐进视觉子目标：长时 WAM 的结构化未来", en: "From 3D Rehearsal to Progressive Visual Subgoals: Structured Futures for Long-Horizon WAMs" },
     mustReadCount: 5,
