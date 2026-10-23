@@ -13,6 +13,14 @@ export const registry: DigestMeta[] = [
   {
     roleId: "world-action-model",
     roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
+    date: "2026-10-23",
+    title: { zh: "骨架约束潜动作、策略效用驱动世界模型与显式三维预演", en: "Skeleton-Grounded Latent Actions, Policy-Useful World Models, and Explicit 3D Foresight" },
+    mustReadCount: 5,
+    worthReadingCount: 3,
+  },
+  {
+    roleId: "world-action-model",
+    roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
     date: "2026-10-20",
     title: { zh: "互联网视频预训练统一导航，短片训练稳定长程世界模型", en: "Unified Navigation from Internet Video and Stable Long-Horizon World Models from Short Clips" },
     mustReadCount: 1,
