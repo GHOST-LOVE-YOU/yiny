@@ -11,6 +11,14 @@ export interface DigestMeta {
 
 export const registry: DigestMeta[] = [
   {
+    roleId: "music-to-dance",
+    roleName: { zh: "Music-to-Dance 视频生成研究者", en: "Music-to-Dance Video Generation Researcher" },
+    date: "2026-10-26",
+    title: { zh: "显式群舞编排、持久状态长时动作与可执行人体运动", en: "Explicit Group Choreography, Persistent Long-Horizon Motion, and Executable Human Movement" },
+    mustReadCount: 3,
+    worthReadingCount: 4,
+  },
+  {
     roleId: "world-action-model",
     roleName: { zh: "World Action Model 研究者", en: "World Action Model Researcher" },
     date: "2026-10-23",
